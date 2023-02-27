@@ -1,5 +1,5 @@
 import styles from './GameLandingPage.module.css';
-import blurbs from './blurbs.json';
+import blurbs from '../../data/blurbs.json';
 import Button from '../Button/Button';
 export default function GameLandingPage({ GameType, onClick }) {
   return (
