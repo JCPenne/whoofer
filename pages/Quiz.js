@@ -28,10 +28,10 @@ export default function Quiz() {
       ) : (
         <>
           <h1 style={{ color: 'white' }}>Quiz</h1>
-          {/* <Timer
-            numOfSecs={5}
+          <Timer
+            numOfSecs={10}
             timeExpired={setDisableButton}
-          ></Timer> */}
+          ></Timer>
           <p>{currentQuestion.question}</p>
           {currentQuestion.options.map((option, index) => {
             return (

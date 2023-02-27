@@ -7,11 +7,11 @@ export default function Timer({ numOfSecs, timeExpired }) {
 
   React.useEffect(() => {
     if (time === 0) {
-      timeExpired(true)
+      timeExpired(true);
       return;
     }
     setTimeout(() => {
-      console.log('tick');
+      // console.log('tick');
       setTime(currentValue => currentValue - 1);
     }, 1000);
   });
