@@ -33,7 +33,10 @@ export default function Home() {
           priority
         />
         <p className={styles.description}>
-          Welcome to Whoofer! The Dog Quiz made by dogs for humans
+          Welcome to Whoofer!
+          <br />
+          The Dog Quiz made by dogs for humans.
+          <br />
           Pick a game to get started!
         </p>
         <div className={styles.buttonArray}>
