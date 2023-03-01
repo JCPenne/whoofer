@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Timer from '@/components/Timer/Timer';
-import Button from '@/components/Button/Button';
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
+import { QuizQuestions } from '@/components/QuizQuestions/QuizQuestions';
 
 import Questions from '../data/questions.json';
 
@@ -32,7 +31,10 @@ export default function Quiz() {
       SetNumOfCorrectAnswers(numOfCorrectAnswers + 1);
       setQuestionNumber(questionNumber + 1);
     } else {
-      // setAnswerStatus({ ...answerStatus, incorrect: true });
+      setAnswerStatus({ ...answerStatus, incorrect: true });
+      setTimeout(() => {
+        setAnswerStatus({ ...answerStatus, incorrect: false });
+      }, 3000);
       setQuestionNumber(questionNumber + 1);
     }
   }
@@ -48,21 +50,11 @@ export default function Quiz() {
           {answerStatus.correct ? (
             <h1>Correct</h1>
           ) : (
-            <>
-              <h1 style={{ color: 'white' }}>Quiz</h1>
-              <p>{currentQuestion.question}</p>
-              {currentQuestion.options.map((option, index) => {
-                return (
-                  <Button
-                    key={index}
-                    disabled={disableButton}
-                    onClick={() => handleClick(option)}
-                  >
-                    {option}
-                  </Button>
-                );
-              })}
-            </>
+            <QuizQuestions
+              currentQuestion={currentQuestion}
+              handleClick={handleClick}
+              disabled={disableButton}
+            ></QuizQuestions>
           )}
         </>
       )}
