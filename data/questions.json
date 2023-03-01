@@ -1,13 +1,12 @@
-{
-  "1": {
+[
+  {
     "question": "What dog is Golden?",
     "answer": 0,
     "options": ["Golden Retriever", "Greyhound", "Husky"]
   },
-
-  "2": {
+  {
     "question": "What dog is Husky?",
     "answer": 2,
     "options": ["Golden Retriever", "Greyhound", "Husky"]
   }
-}
+]
