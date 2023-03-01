@@ -10,12 +10,21 @@ export default function Quiz() {
   const [quizActive, setQuizActive] = React.useState(false);
   const [disableButton, setDisableButton] = React.useState(false);
   const [questionNumber, setQuestionNumber] = React.useState(1);
+  const [answerStatus, setAnswerStatus] = React.useState({
+    correct: false,
+    incorrect: false,
+  });
+  console.log({ answerStatus });
 
   const currentQuestion = Questions[questionNumber];
 
   function handleClick(buttonValue) {
-    if (buttonValue === currentQuestion.answer) {
-      console.log('correct');
+    const index = currentQuestion.answer;
+
+    if (buttonValue === currentQuestion.options[index]) {
+      setAnswerStatus({ ...answerStatus, correct: true });
+    } else {
+      setAnswerStatus({ ...answerStatus, incorrect: true });
     }
   }
   return (
@@ -28,10 +37,10 @@ export default function Quiz() {
       ) : (
         <>
           <h1 style={{ color: 'white' }}>Quiz</h1>
-          <Timer
+          {/* <Timer
             numOfSecs={10}
             timeExpired={setDisableButton}
-          ></Timer>
+          ></Timer> */}
           <p>{currentQuestion.question}</p>
           {currentQuestion.options.map((option, index) => {
             return (
