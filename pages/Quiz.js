@@ -13,8 +13,10 @@ export default function Quiz() {
   const [answerStatus, setAnswerStatus] = React.useState({
     correct: false,
     incorrect: false,
+    timeExpired: false,
   });
-  console.log({ answerStatus });
+  const [numOfCorrectAnswers, SetNumOfCorrectAnswers] =
+    React.useState(0);
 
   const currentQuestion = Questions[questionNumber];
 
@@ -23,8 +25,15 @@ export default function Quiz() {
 
     if (buttonValue === currentQuestion.options[index]) {
       setAnswerStatus({ ...answerStatus, correct: true });
+      setTimeout(() => {
+        setAnswerStatus({ ...answerStatus, correct: false });
+      }, 3000);
+
+      SetNumOfCorrectAnswers(numOfCorrectAnswers + 1);
+      setQuestionNumber(questionNumber + 1);
     } else {
-      setAnswerStatus({ ...answerStatus, incorrect: true });
+      // setAnswerStatus({ ...answerStatus, incorrect: true });
+      setQuestionNumber(questionNumber + 1);
     }
   }
   return (
@@ -36,23 +45,25 @@ export default function Quiz() {
         />
       ) : (
         <>
-          <h1 style={{ color: 'white' }}>Quiz</h1>
-          {/* <Timer
-            numOfSecs={10}
-            timeExpired={setDisableButton}
-          ></Timer> */}
-          <p>{currentQuestion.question}</p>
-          {currentQuestion.options.map((option, index) => {
-            return (
-              <Button
-                key={index}
-                disabled={disableButton}
-                onClick={() => handleClick(option)}
-              >
-                {option}
-              </Button>
-            );
-          })}
+          {answerStatus.correct ? (
+            <h1>Correct</h1>
+          ) : (
+            <>
+              <h1 style={{ color: 'white' }}>Quiz</h1>
+              <p>{currentQuestion.question}</p>
+              {currentQuestion.options.map((option, index) => {
+                return (
+                  <Button
+                    key={index}
+                    disabled={disableButton}
+                    onClick={() => handleClick(option)}
+                  >
+                    {option}
+                  </Button>
+                );
+              })}
+            </>
+          )}
         </>
       )}
     </>

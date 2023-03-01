@@ -10,10 +10,13 @@ export default function Timer({ numOfSecs, timeExpired }) {
       timeExpired(true);
       return;
     }
-    setTimeout(() => {
-      // console.log('tick');
+    const timeoutID = setTimeout(() => {
       setTime(currentValue => currentValue - 1);
     }, 1000);
+
+    return () => {
+      clearTimeout(timeoutID);
+    };
   });
 
   return (
