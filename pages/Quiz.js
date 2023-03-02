@@ -1,44 +1,45 @@
 import React from 'react';
 
+//Import Components
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { QuizQuestions } from '@/components/QuizQuestions/QuizQuestions';
-import { AnswerResult } from '@/components/AnswerResult/AnswerResult';
+import { QuestionStatus } from '@/components/QuestionStatus/QuestionStatus';
 import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 
+//Import Data
 import Questions from '../data/questions.json';
 
 export default function Quiz() {
-  const [quizActive, setQuizActive] = React.useState(false);
+  //Declare State Variables
   const [time, setTime] = React.useState(5);
   const [timeExpired, setTimeExpired] = React.useState(false);
+  const [quizActive, setQuizActive] = React.useState(false);
   const [disableButton, setDisableButton] = React.useState(false);
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [answerStatus, setAnswerStatus] = React.useState({
     correct: false,
     incorrect: false,
-    timeExpired: false,
   });
-  const [numOfCorrectAnswers, SetNumOfCorrectAnswers] =
+  const [numOfCorrectAnswers, setNumOfCorrectAnswers] =
     React.useState(0);
   const [quizEnd, setQuizEnd] = React.useState(false);
 
-  const currentQuestion = Questions[questionNumber];
+  //Declare Global Variables
   const timer = React.useRef(null); //{current: null}
+  const currentQuestion = Questions[questionNumber];
 
-  console.log(time);
-
-  function handleClick(buttonValue) {
+  //Declare Functions
+  function handleAnswerSelection(buttonValue) {
     let answerStatus;
-    const correctAnswerIndex = currentQuestion.answer;
+    const { answer, options } = currentQuestion;
 
-    buttonValue === currentQuestion.options[correctAnswerIndex]
+    buttonValue === options[answer]
       ? (answerStatus = 'correct')
       : (answerStatus = 'incorrect');
 
     answerStatus === 'correct' &&
-      SetNumOfCorrectAnswers(numOfCorrectAnswers + 1);
-
-    setAnswerStatus({ ...answerStatus, [answerStatus]: true });
+      setNumOfCorrectAnswers(numOfCorrectAnswers + 1);
+    etAnswerStatus({ ...answerStatus, [answerStatus]: true });
 
     setTimeout(() => {
       setAnswerStatus({ ...answerStatus, [answerStatus]: false });
@@ -47,27 +48,27 @@ export default function Quiz() {
     }, 1000);
   }
 
+  function resetTimer() {
+    setTimeExpired(true);
+    setDisableButton(true);
+
+    setTimeout(() => {
+      setTime(5);
+      setTimeExpired(false);
+      setDisableButton(false);
+    }, 2000);
+    return;
+  }
+
+  function startTimer() {
+    timer.current = setTimeout(() => {
+      setTime(currentValue => currentValue - 1);
+    }, 1000);
+  }
+
   React.useEffect(() => {
-    if (time === 0) {
-      setAnswerStatus(currentValue => ({
-        ...currentValue,
-        timeExpired: true,
-      }));
-      setTimeout(() => {
-        setTime(5);
-        setAnswerStatus(currentValue => ({
-          ...currentValue,
-          timeExpired: false,
-        }));
-        
-      }, 2000);
-      return;
-    }
-    if (quizActive) {
-      timer.current = setTimeout(() => {
-        setTime(prev => prev - 1);
-      }, 1000);
-    }
+    time === 0 && resetTimer();
+    quizActive && startTimer();
     return () => {
       clearTimeout(timer.current);
     };
@@ -91,20 +92,23 @@ export default function Quiz() {
             <>
               {!answerStatus.correct &&
               !answerStatus.incorrect &&
-              !answerStatus.timeExpired ? (
+              !timeExpired ? (
                 <>
                   <h1>Quiz</h1>
                   <h2>{`Question ${questionNumber + 1}`}</h2>
                   <QuizQuestions
                     currentQuestion={currentQuestion}
-                    onClick={handleClick}
+                    onClick={handleAnswerSelection}
                     disableButtons={disableButton}
                   ></QuizQuestions>
                   <p>{time}</p>
                   <p>{`${numOfCorrectAnswers} of ${Questions.length} correct`}</p>
                 </>
               ) : (
-                <AnswerResult answerStatus={answerStatus} />
+                <QuestionStatus
+                  answerStatus={answerStatus}
+                  timeExpired={timeExpired}
+                />
               )}
             </>
           )}
