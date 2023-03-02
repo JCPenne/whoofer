@@ -1,6 +1,6 @@
 import Button from '../Button/Button';
 
-export function QuizQuestions({currentQuestion, onClick, disableButtons}) {
+export function QuizQuestions({ currentQuestion, onClick }) {
   return (
     <>
       <p>{currentQuestion.question}</p>
@@ -8,7 +8,6 @@ export function QuizQuestions({currentQuestion, onClick, disableButtons}) {
         return (
           <Button
             key={index}
-            disabled={disableButtons}
             onClick={() => onClick(option)}
           >
             {option}

@@ -3,18 +3,22 @@ import React from 'react';
 //Import Components
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { QuizQuestions } from '@/components/QuizQuestions/QuizQuestions';
-import { QuestionStatus } from '@/components/QuestionStatus/QuestionStatus';
 import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 
 //Import Data
 import Questions from '../data/questions.json';
+//Import Constants
+import { timeAllowance } from '@/constants';
+import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
 
 export default function Quiz() {
   //Declare State Variables
-  const [time, setTime] = React.useState(5);
-  const [timeExpired, setTimeExpired] = React.useState(false);
+  const [time, setTime] = React.useState(timeAllowance);
+  const [timerActive, setTimerActive] = React.useState(false);
+  const [timerExpired, setTimerExpired] = React.useState(false);
   const [quizActive, setQuizActive] = React.useState(false);
-  const [disableButton, setDisableButton] = React.useState(false);
+  const [quizEnd, setQuizEnd] = React.useState(false);
+
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [answerStatus, setAnswerStatus] = React.useState({
     correct: false,
@@ -22,13 +26,19 @@ export default function Quiz() {
   });
   const [numOfCorrectAnswers, setNumOfCorrectAnswers] =
     React.useState(0);
-  const [quizEnd, setQuizEnd] = React.useState(false);
 
   //Declare Global Variables
   const timer = React.useRef(null); //{current: null}
   const currentQuestion = Questions[questionNumber];
 
   //Declare Functions
+  function handleQuizStart() {
+    setQuizActive(true);
+    setTimeout(() => {
+      setTimerActive(true);
+    }, 1000);
+  }
+
   function handleAnswerSelection(buttonValue) {
     let answerStatus;
     const { answer, options } = currentQuestion;
@@ -37,42 +47,53 @@ export default function Quiz() {
       ? (answerStatus = 'correct')
       : (answerStatus = 'incorrect');
 
-    answerStatus === 'correct' &&
-      setNumOfCorrectAnswers(numOfCorrectAnswers + 1),
-      setAnswerStatus({ ...answerStatus, [answerStatus]: true });
+    progressQuiz(answerStatus);
+  }
+
+  function progressQuiz(status) {
+    status === 'correct' &&
+      setNumOfCorrectAnswers(numOfCorrectAnswers + 1);
+
+    setAnswerStatus({ ...answerStatus, [status]: true });
 
     setTimeout(() => {
-      setAnswerStatus({ ...answerStatus, [answerStatus]: false });
-      setQuestionNumber(questionNumber + 1);
-      questionNumber === Questions.length - 1 && setQuizEnd(true);
+      setAnswerStatus({ correct: false, incorrect: false });
+      questionNumber === Questions.length - 1
+        ? setQuizEnd(true)
+        : setQuestionNumber(questionNumber + 1);
     }, 1000);
+
+    resetTimer();
   }
 
   function resetTimer() {
-    setTimeExpired(true);
-    setDisableButton(true);
+    time === 0 && setTimerExpired(true);
+    setTimerActive(false);
+    setTime(timeAllowance);
 
     setTimeout(() => {
-      setTime(5);
-      setTimeExpired(false);
-      setDisableButton(false);
+      setTimerExpired(false);
+    }, 1500);
+    setTimeout(() => {
+      setTimerActive(true);
     }, 2000);
-    return;
-  }
-
-  function startTimer() {
-    timer.current = setTimeout(() => {
-      setTime(currentValue => currentValue - 1);
-    }, 1000);
   }
 
   React.useEffect(() => {
-    time === 0 && resetTimer();
-    quizActive && startTimer();
+    if (time === 0) {
+      progressQuiz();
+    }
+    if (time > 0 && timerActive && !quizEnd) {
+      timer.current = setTimeout(() => {
+        setTime(time - 1);
+        console.log('tick');
+      }, 1000);
+    }
+
     return () => {
       clearTimeout(timer.current);
     };
-  }, [time, quizActive]);
+  });
 
   return (
     <>
@@ -86,28 +107,27 @@ export default function Quiz() {
           {!quizActive ? (
             <GameLandingPage
               GameType='Quiz'
-              onClick={setQuizActive}
+              onClick={handleQuizStart}
             />
           ) : (
             <>
               {!answerStatus.correct &&
               !answerStatus.incorrect &&
-              !timeExpired ? (
+              !timerExpired ? (
                 <>
                   <h1>Quiz</h1>
                   <h2>{`Question ${questionNumber + 1}`}</h2>
                   <QuizQuestions
                     currentQuestion={currentQuestion}
                     onClick={handleAnswerSelection}
-                    disableButtons={disableButton}
                   ></QuizQuestions>
                   <p>{time}</p>
                   <p>{`${numOfCorrectAnswers} of ${Questions.length} correct`}</p>
                 </>
               ) : (
-                <QuestionStatus
+                <QuizQuestionResult
                   answerStatus={answerStatus}
-                  timeExpired={timeExpired}
+                  timerExpired={timerExpired}
                 />
               )}
             </>
