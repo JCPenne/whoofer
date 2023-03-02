@@ -9,6 +9,8 @@ import Questions from '../data/questions.json';
 
 export default function Quiz() {
   const [quizActive, setQuizActive] = React.useState(false);
+  const [time, setTime] = React.useState(5);
+  const [timeExpired, setTimeExpired] = React.useState(false);
   const [disableButton, setDisableButton] = React.useState(false);
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [answerStatus, setAnswerStatus] = React.useState({
@@ -21,6 +23,9 @@ export default function Quiz() {
   const [quizEnd, setQuizEnd] = React.useState(false);
 
   const currentQuestion = Questions[questionNumber];
+  const timer = React.useRef(null); //{current: null}
+
+  console.log(time);
 
   function handleClick(buttonValue) {
     let answerStatus;
@@ -42,10 +47,39 @@ export default function Quiz() {
     }, 1000);
   }
 
+  React.useEffect(() => {
+    if (time === 0) {
+      setAnswerStatus(currentValue => ({
+        ...currentValue,
+        timeExpired: true,
+      }));
+      setTimeout(() => {
+        setTime(5);
+        setAnswerStatus(currentValue => ({
+          ...currentValue,
+          timeExpired: false,
+        }));
+        
+      }, 2000);
+      return;
+    }
+    if (quizActive) {
+      timer.current = setTimeout(() => {
+        setTime(prev => prev - 1);
+      }, 1000);
+    }
+    return () => {
+      clearTimeout(timer.current);
+    };
+  }, [time, quizActive]);
+
   return (
     <>
       {quizEnd ? (
-        <QuizEnd quizLength={Questions.length} correctAnswers={numOfCorrectAnswers}/>
+        <QuizEnd
+          quizLength={Questions.length}
+          correctAnswers={numOfCorrectAnswers}
+        />
       ) : (
         <>
           {!quizActive ? (
@@ -55,7 +89,9 @@ export default function Quiz() {
             />
           ) : (
             <>
-              {!answerStatus.correct && !answerStatus.incorrect ? (
+              {!answerStatus.correct &&
+              !answerStatus.incorrect &&
+              !answerStatus.timeExpired ? (
                 <>
                   <h1>Quiz</h1>
                   <h2>{`Question ${questionNumber + 1}`}</h2>
@@ -64,6 +100,7 @@ export default function Quiz() {
                     onClick={handleClick}
                     disableButtons={disableButton}
                   ></QuizQuestions>
+                  <p>{time}</p>
                   <p>{`${numOfCorrectAnswers} of ${Questions.length} correct`}</p>
                 </>
               ) : (

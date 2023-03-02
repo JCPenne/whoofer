@@ -1,13 +1,11 @@
 import React from 'react';
 
-import styles from './timer.module.css';
-
-export default function Timer({ numOfSecs, timeExpired }) {
-  const [time, setTime] = React.useState(numOfSecs || 0);
+export default function Timer({ setTimeExpired }) {
+  const [time, setTime] = React.useState(5);
 
   React.useEffect(() => {
     if (time === 0) {
-      timeExpired(true);
+      setTimeExpired(true);
       return;
     }
     const timeoutID = setTimeout(() => {
@@ -17,15 +15,7 @@ export default function Timer({ numOfSecs, timeExpired }) {
     return () => {
       clearTimeout(timeoutID);
     };
-  });
+  }, [setTimeExpired,time]);
 
-  return (
-    <>
-      {time > 0 ? (
-        <div className={styles.timer}>{time}</div>
-      ) : (
-        <p style={{ color: 'white' }}>Times up!</p>
-      )}
-    </>
-  );
+  return <>{time > 0 ? <div>{time}</div> : <p>Times up!</p>}</>;
 }
