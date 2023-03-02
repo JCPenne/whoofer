@@ -40,14 +40,14 @@ export default function Home() {
           Pick a game to get started!
         </p>
         <div className={styles.buttonArray}>
-          <Link href='/Quiz'>
-            <Button className={styles.button}>Quiz</Button>
+          <Link href='/quiz'>
+            <Button>Quiz</Button>
           </Link>
           <Link href='/Fetch'>
-            <Button className={styles.button}>Fetch</Button>
+            <Button>Fetch</Button>
           </Link>
           <Link href='/HideAndSeek'>
-            <Button className={styles.button}>Hide & Seek</Button>
+            <Button>Hide & Seek</Button>
           </Link>
         </div>
       </main>

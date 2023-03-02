@@ -3,6 +3,7 @@ import React from 'react';
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { QuizQuestions } from '@/components/QuizQuestions/QuizQuestions';
 import { AnswerResult } from '@/components/AnswerResult/AnswerResult';
+import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 
 import Questions from '../data/questions.json';
 
@@ -33,18 +34,18 @@ export default function Quiz() {
       SetNumOfCorrectAnswers(numOfCorrectAnswers + 1);
 
     setAnswerStatus({ ...answerStatus, [answerStatus]: true });
+
     setTimeout(() => {
       setAnswerStatus({ ...answerStatus, [answerStatus]: false });
-    }, 3000);
-
-    setQuestionNumber(questionNumber + 1);
-    questionNumber === Questions.length - 1 && setQuizEnd(true);
+      setQuestionNumber(questionNumber + 1);
+      questionNumber === Questions.length - 1 && setQuizEnd(true);
+    }, 1000);
   }
 
   return (
     <>
       {quizEnd ? (
-        <h1>End</h1>
+        <QuizEnd quizLength={Questions.length} correctAnswers={numOfCorrectAnswers}/>
       ) : (
         <>
           {!quizActive ? (
@@ -55,11 +56,16 @@ export default function Quiz() {
           ) : (
             <>
               {!answerStatus.correct && !answerStatus.incorrect ? (
-                <QuizQuestions
-                  currentQuestion={currentQuestion}
-                  onClick={handleClick}
-                  disableButtons={disableButton}
-                ></QuizQuestions>
+                <>
+                  <h1>Quiz</h1>
+                  <h2>{`Question ${questionNumber + 1}`}</h2>
+                  <QuizQuestions
+                    currentQuestion={currentQuestion}
+                    onClick={handleClick}
+                    disableButtons={disableButton}
+                  ></QuizQuestions>
+                  <p>{`${numOfCorrectAnswers} of ${Questions.length} correct`}</p>
+                </>
               ) : (
                 <AnswerResult answerStatus={answerStatus} />
               )}
