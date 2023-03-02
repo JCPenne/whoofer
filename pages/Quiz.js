@@ -19,25 +19,22 @@ export default function Quiz() {
     React.useState(0);
   const [quizEnd, setQuizEnd] = React.useState(false);
 
-  console.log('quizEnd', quizEnd);
-  console.log(Questions.length);
-
   const currentQuestion = Questions[questionNumber];
 
   function handleClick(buttonValue) {
-    let result;
-    const indexOfAnswer = currentQuestion.answer;
+    let answerStatus;
+    const correctAnswerIndex = currentQuestion.answer;
 
-    buttonValue === currentQuestion.options[indexOfAnswer]
-      ? (result = 'correct')
-      : (result = 'incorrect');
+    buttonValue === currentQuestion.options[correctAnswerIndex]
+      ? (answerStatus = 'correct')
+      : (answerStatus = 'incorrect');
 
-    result === 'correct' &&
+    answerStatus === 'correct' &&
       SetNumOfCorrectAnswers(numOfCorrectAnswers + 1);
 
-    setAnswerStatus({ ...answerStatus, [result]: true });
+    setAnswerStatus({ ...answerStatus, [answerStatus]: true });
     setTimeout(() => {
-      setAnswerStatus({ ...answerStatus, [result]: false });
+      setAnswerStatus({ ...answerStatus, [answerStatus]: false });
     }, 3000);
 
     setQuestionNumber(questionNumber + 1);
@@ -60,8 +57,8 @@ export default function Quiz() {
               {!answerStatus.correct && !answerStatus.incorrect ? (
                 <QuizQuestions
                   currentQuestion={currentQuestion}
-                  handleClick={handleClick}
-                  disabled={disableButton}
+                  onClick={handleClick}
+                  disableButtons={disableButton}
                 ></QuizQuestions>
               ) : (
                 <AnswerResult answerStatus={answerStatus} />

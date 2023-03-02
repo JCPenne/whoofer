@@ -1,6 +1,6 @@
 import Button from '../Button/Button';
 
-export function QuizQuestions({currentQuestion, handleClick, disableButton}) {
+export function QuizQuestions({currentQuestion, onClick, disableButtons}) {
   return (
     <>
       <h1 style={{ color: 'white' }}>Quiz</h1>
@@ -9,8 +9,8 @@ export function QuizQuestions({currentQuestion, handleClick, disableButton}) {
         return (
           <Button
             key={index}
-            disabled={disableButton}
-            onClick={() => handleClick(option)}
+            disabled={disableButtons}
+            onClick={() => onClick(option)}
           >
             {option}
           </Button>
