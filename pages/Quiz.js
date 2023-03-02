@@ -38,8 +38,8 @@ export default function Quiz() {
       : (answerStatus = 'incorrect');
 
     answerStatus === 'correct' &&
-      setNumOfCorrectAnswers(numOfCorrectAnswers + 1);
-    etAnswerStatus({ ...answerStatus, [answerStatus]: true });
+      setNumOfCorrectAnswers(numOfCorrectAnswers + 1),
+      setAnswerStatus({ ...answerStatus, [answerStatus]: true });
 
     setTimeout(() => {
       setAnswerStatus({ ...answerStatus, [answerStatus]: false });
