@@ -6,7 +6,7 @@ export default function Button({ children, disabled, onClick }) {
       type='button'
       className={styles.filled}
       disabled={disabled}
-      onClick={onClick ? () => onClick(true) : null}
+      onClick={onClick && (() => onClick(true))}
     >
       {children}
     </button>

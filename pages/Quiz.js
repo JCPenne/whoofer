@@ -1,138 +1,114 @@
 import React from 'react';
 
-//Import Components
-import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
-import { QuizQuestions } from '@/components/QuizQuestions/QuizQuestions';
-import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
-
 //Import Data
 import Questions from '../data/questions.json';
+
 //Import Constants
 import { timeAllowance } from '@/constants';
-import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
 
-export default function Quiz() {
+//Import Components
+import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
+import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
+import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
+import { Quiz } from '@/components/Quiz';
+
+export default function QuizPage() {
   //Declare State Variables
   const [time, setTime] = React.useState(timeAllowance);
-  const [timerActive, setTimerActive] = React.useState(false);
-  const [timerExpired, setTimerExpired] = React.useState(false);
-  const [quizActive, setQuizActive] = React.useState(false);
-  const [quizEnd, setQuizEnd] = React.useState(false);
+  console.log('time', time);
+  // idle | active | expired
+  const [timerStatus, setTimerStatus] = React.useState('idle');
+  console.log('timerStatus', timerStatus);
+  // idle | active | end
+  const [quizStatus, setQuizStatus] = React.useState('idle');
 
   const [questionNumber, setQuestionNumber] = React.useState(0);
-  const [answerStatus, setAnswerStatus] = React.useState({
-    correct: false,
-    incorrect: false,
-  });
-  const [numOfCorrectAnswers, setNumOfCorrectAnswers] =
-    React.useState(0);
+  const [CorrectAnswers, setCorrectAnswers] = React.useState(0);
+
+  // undefined | correct | incorrect
+  const [answerStatus, setAnswerStatus] = React.useState(undefined);
 
   //Declare Global Variables
-  const timer = React.useRef(null); //{current: null}
   const currentQuestion = Questions[questionNumber];
 
   //Declare Functions
-  function handleQuizStart() {
-    setQuizActive(true);
-    setTimeout(() => {
-      setTimerActive(true);
-    }, 1000);
-  }
-
-  function handleAnswerSelection(buttonValue) {
-    let answerStatus;
-    const { answer, options } = currentQuestion;
-
-    buttonValue === options[answer]
-      ? (answerStatus = 'correct')
-      : (answerStatus = 'incorrect');
-
-    progressQuiz(answerStatus);
-  }
 
   function progressQuiz(status) {
-    status === 'correct' &&
-      setNumOfCorrectAnswers(numOfCorrectAnswers + 1);
+    time === 0 && setTimerStatus('expired');
+    // status === 'correct' && setCorrectAnswers(CorrectAnswers + 1);
 
-    setAnswerStatus({ ...answerStatus, [status]: true });
+    // setAnswerStatus(status);
 
-    setTimeout(() => {
-      setAnswerStatus({ correct: false, incorrect: false });
-      questionNumber === Questions.length - 1
-        ? setQuizEnd(true)
-        : setQuestionNumber(questionNumber + 1);
-    }, 1000);
+    // setTimeout(() => {
+    //   setAnswerStatus(undefined);
+    //   questionNumber === Questions.length - 1
+    //     ? setQuizStatus('end')
+    //     : setQuestionNumber(questionNumber + 1);
+    // }, 2000);
 
-    resetTimer();
+    // resetTimer();
   }
 
   function resetTimer() {
-    time === 0 && setTimerExpired(true);
-    setTimerActive(false);
+    setTimerStatus('idle');
     setTime(timeAllowance);
 
     setTimeout(() => {
-      setTimerExpired(false);
+      setTimerStatus('idle');
     }, 1500);
     setTimeout(() => {
-      setTimerActive(true);
+      setTimerStatus('active');
     }, 2000);
   }
 
   React.useEffect(() => {
+    const interval = setInterval(() => {
+      time > 0 &&
+      timerStatus === 'active' &&
+        setTime(prev => prev - 1);
+    }, 1000);
+
     if (time === 0) {
       progressQuiz();
     }
-    if (time > 0 && timerActive && !quizEnd) {
-      timer.current = setTimeout(() => {
-        setTime(time - 1);
-        console.log('tick');
-      }, 1000);
-    }
 
     return () => {
-      clearTimeout(timer.current);
+      clearInterval(interval);
     };
   });
 
   return (
     <>
-      {quizEnd ? (
+      {quizStatus === 'idle' && (
+        <GameLandingPage
+          GameType='Quiz'
+          setGameStatus={setQuizStatus}
+          setTimerStatus={setTimerStatus}
+        />
+      )}
+      {quizStatus === 'active' && (
+        <>
+          <Quiz
+            questionNum={questionNumber}
+            currentQuestion={currentQuestion}
+            setAnswerStatus={setAnswerStatus}
+            CorrectAnswers={CorrectAnswers}
+            quizLength={Questions.length}
+          ></Quiz>
+          <p>{time}</p>
+        </>
+      )}
+      {answerStatus && (
+        <QuizQuestionResult answerStatus={answerStatus} />
+      )}
+      {timerStatus === 'expired' && (
+        <QuizQuestionResult timeExpired={true} />
+      )}
+      {quizStatus === 'end' && (
         <QuizEnd
           quizLength={Questions.length}
-          correctAnswers={numOfCorrectAnswers}
+          correctAnswers={CorrectAnswers}
         />
-      ) : (
-        <>
-          {!quizActive ? (
-            <GameLandingPage
-              GameType='Quiz'
-              onClick={handleQuizStart}
-            />
-          ) : (
-            <>
-              {!answerStatus.correct &&
-              !answerStatus.incorrect &&
-              !timerExpired ? (
-                <>
-                  <h1>Quiz</h1>
-                  <h2>{`Question ${questionNumber + 1}`}</h2>
-                  <QuizQuestions
-                    currentQuestion={currentQuestion}
-                    onClick={handleAnswerSelection}
-                  ></QuizQuestions>
-                  <p>{time}</p>
-                  <p>{`${numOfCorrectAnswers} of ${Questions.length} correct`}</p>
-                </>
-              ) : (
-                <QuizQuestionResult
-                  answerStatus={answerStatus}
-                  timerExpired={timerExpired}
-                />
-              )}
-            </>
-          )}
-        </>
       )}
     </>
   );
