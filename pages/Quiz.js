@@ -15,9 +15,7 @@ import { Quiz } from '@/components/Quiz';
 export default function QuizPage() {
   //Declare State Variables
   const [time, setTime] = React.useState(timeAllowance);
-  console.log(time);
   const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired
-  console.log(timerStatus);
   const [quizStatus, setQuizStatus] = React.useState('idle'); // idle | active | end
   const [answerStatus, setAnswerStatus] = React.useState(undefined); // undefined | correct | incorrect
   const [questionNumber, setQuestionNumber] = React.useState(0);
@@ -62,6 +60,26 @@ export default function QuizPage() {
     }, 1000);
   }
 
+  function renderQuizComponent() {
+    if (
+      quizStatus === 'active' &&
+      !answerStatus &&
+      timerStatus === 'active'
+    )
+      return (
+        <>
+          <Quiz
+            questionNum={questionNumber}
+            currentQuestion={currentQuestion}
+            validateAnswer={validateAnswer}
+            CorrectAnswers={correctAnswers}
+            quizLength={Questions.length}
+          ></Quiz>
+          <p>{time}</p>
+        </>
+      );
+  }
+
   React.useEffect(() => {
     const interval = setInterval(() => {
       if (time > 0 && timerStatus === 'active') {
@@ -85,18 +103,7 @@ export default function QuizPage() {
           setTimerStatus={setTimerStatus}
         />
       )}
-      {quizStatus === 'active' && (
-        <>
-          <Quiz
-            questionNum={questionNumber}
-            currentQuestion={currentQuestion}
-            validateAnswer={validateAnswer}
-            CorrectAnswers={correctAnswers}
-            quizLength={Questions.length}
-          ></Quiz>
-          <p>{time}</p>
-        </>
-      )}
+      {renderQuizComponent()}
       {answerStatus && (
         <QuizQuestionResult answerStatus={answerStatus} />
       )}
