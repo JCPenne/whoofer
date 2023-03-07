@@ -5,7 +5,7 @@ import { QuizQuestion } from './QuizQuestions/QuizQuestion';
 export function Quiz({
   currentQuestion,
   questionNum,
-  setAnswerStatus,
+  validateAnswer,
   quizLength,
   CorrectAnswers,
 }) {
@@ -15,7 +15,7 @@ export function Quiz({
       <h2>{`Question ${questionNum + 1}`}</h2>
       <QuizQuestion
         currentQuestion={currentQuestion}
-        setAnswerStatus={setAnswerStatus}
+        validateAnswer={validateAnswer}
       ></QuizQuestion>
       <p>{`${CorrectAnswers} of ${quizLength} correct`}</p>
     </>

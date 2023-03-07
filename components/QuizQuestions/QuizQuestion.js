@@ -1,14 +1,6 @@
 import Button from '../Button/Button';
 
-export function QuizQuestion({ currentQuestion, setAnswerStatus }) {
-  function handleClick(value) {
-    const { answer, options } = currentQuestion;
-
-    value === options[answer]
-      ? (setAnswerStatus = 'correct')
-      : (setAnswerStatus = 'incorrect');
-  }
-
+export function QuizQuestion({ currentQuestion, validateAnswer }) {
   return (
     <>
       <p>{currentQuestion.question}</p>
@@ -16,7 +8,7 @@ export function QuizQuestion({ currentQuestion, setAnswerStatus }) {
         return (
           <Button
             key={index}
-            onClick={() => handleClick(answerValue)}
+            onClick={() => validateAnswer(answerValue)}
           >
             {answerValue}
           </Button>
