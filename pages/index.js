@@ -46,7 +46,7 @@ export default function Home() {
           <Link href='/Fetch'>
             <Button>Fetch</Button>
           </Link>
-          <Link href='/HideAndSeek'>
+          <Link href='/hideandseek'>
             <Button>Hide & Seek</Button>
           </Link>
         </div>
