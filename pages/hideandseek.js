@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function HideAndSeek() {
-  return <h1>Hide And Seek</h1>;
+import HideAndSeek from '@/components/HideAndSeek/HideAndSeek';
+
+export default function HideAndSeekPage() {
+  return <HideAndSeek></HideAndSeek>;
 }
