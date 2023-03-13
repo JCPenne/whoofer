@@ -14,19 +14,31 @@ export default function HideAndSeek() {
       setMousePos({ x: event.clientX, y: event.clientY });
     }
 
-    draw(canvasRef.current, mousePos.x, mousePos.y);
+    drawCursor(canvasRef.current, mousePos.x, mousePos.y);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [mousePos]);
+  });
+  //On each render, either + 1 or - 1 to both x and y in randomPos object and draw the circle in the according space in the canvas
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      const x = Math.floor(Math.random() * 500);
+      const y = Math.floor(Math.random() * 500);
+      draw(canvasRef.current, x, y);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  });
 
   return (
     <>
-      {/* <div>Hide And Seek</div>
-        <div>
-          {mousePos.x} / {mousePos.y}
-        </div> */}
+      <div>Hide And Seek</div>
+      <div>
+        {mousePos.x} / {mousePos.y}
+      </div>
       <canvas
         ref={canvasRef}
         className={styles.canvas}
@@ -38,7 +50,7 @@ export default function HideAndSeek() {
   );
 }
 
-function draw(canvas, x, y) {
+function drawCursor(canvas, x, y) {
   const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.height, canvas.width);
@@ -46,6 +58,18 @@ function draw(canvas, x, y) {
   ctx.fillStyle = 'white';
   ctx.beginPath();
   ctx.arc(x, y, 50, 0, 2 * Math.PI);
+  ctx.stroke();
+  ctx.fill();
+}
+
+function draw(canvas, x, y) {
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0, 0, canvas.height, canvas.width);
+
+  ctx.fillStyle = 'white';
+  ctx.beginPath();
+  ctx.arc(x, y, 25, 0, 2 * Math.PI);
   ctx.stroke();
   ctx.fill();
 }
