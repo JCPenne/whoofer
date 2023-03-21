@@ -10,6 +10,12 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
   color: #be4332;
   background: #f1eacf;

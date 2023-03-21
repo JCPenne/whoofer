@@ -1,0 +1,30 @@
+.filled {
+  height: 100%;
+  width: 100%;
+  font-family: inherit;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: #be4332;
+  transition: 1.5s ease-in-out;
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.filled:hover {
+  background-color: #be4332;
+  color: #f1eacf;
+  animation-play-state: paused;
+}
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
