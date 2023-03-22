@@ -1,4 +1,4 @@
-.filled {
+.homepage {
   height: 100%;
   width: 100%;
   font-family: inherit;
@@ -12,7 +12,7 @@
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
-.filled:hover {
+.homepage:hover {
   background-color: #be4332;
   color: #f1eacf;
   animation-play-state: paused;
@@ -27,4 +27,16 @@
   100% {
     transform: translate(0, -0px);
   }
+}
+
+.start-game {
+  height: 100%;
+  width: 100%;
+  font-family: inherit;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: #be4332;
+  transition: 1.5s ease-in-out;
+  cursor: pointer;
 }

@@ -21,6 +21,10 @@ body {
   background: #f1eacf;
 }
 
+p {
+  color: #f1eacf;
+}
+
 a {
   color: inherit;
   text-decoration: none;

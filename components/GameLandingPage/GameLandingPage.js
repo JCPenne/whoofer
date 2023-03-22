@@ -17,7 +17,7 @@ export default function GameLandingPage({
       <h1>{GameType}</h1>
       <p>{blurbs[GameType]}</p>
       <p>The game and timer will begin when you click Start</p>
-      <Button onClick={handleGameStart}>Start</Button>
+      <Button onClick={handleGameStart} type='start-game'>Start</Button>
     </>
   );
 }

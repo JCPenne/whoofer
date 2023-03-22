@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-
-
 import styles from '@/styles/Home.module.css';
 
 import Button from '@/components/Button/Button';
@@ -23,8 +21,6 @@ export default function Home() {
       </Head>
       <h1 className={styles.title}>Whoofer</h1>
       <p className={styles.description}>
-        Welcome to Whoofer!
-        <br />
         The Dog Quiz made by dogs for humans.
         <br />
         Pick a game to get started!
@@ -34,19 +30,37 @@ export default function Home() {
           href='/quiz'
           className={styles.link}
         >
-          <Button>Quiz</Button>
+          <p className={styles.game_blurb__primary}>
+            Test your dog breed knowledge
+          </p>
+          <p className={styles.game_blurb__secondary}>
+            60 seconds to answer 10 questions
+          </p>
+          <h3 className={styles.link_label}>Quiz</h3>
         </Link>
         <Link
           href='/Fetch'
           className={styles.link}
         >
-          <Button>Fetch</Button>
+          <p className={styles.game_blurb__primary}>
+            Fetch is still in training
+          </p>
+          <p className={styles.game_blurb__secondary}>
+            We&apos;re excited too!
+          </p>
+          <h3 className={styles.link_label}>Fetch</h3>
         </Link>
         <Link
           href='/HideAndSeek'
           className={styles.link}
         >
-          <Button>Hide & Seek</Button>
+          <p className={styles.game_blurb__primary}>
+            We haven&apos;t learnt how to hide yet!
+          </p>
+          <p className={styles.game_blurb__secondary}>
+            Once we do you&apos;ll never find us!
+          </p>
+          <h3 className={styles.link_label}>Hide & Seek</h3>
         </Link>
       </div>
     </>
