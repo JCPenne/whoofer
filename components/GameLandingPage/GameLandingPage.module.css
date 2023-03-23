@@ -1,1 +1,10 @@
-
+.game_type { 
+  font-size: 140px;
+}
+.game_blurb {
+  color: #be4332;
+  margin: 20px 100px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 3;
+}
