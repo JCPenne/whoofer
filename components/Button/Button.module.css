@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   font-family: inherit;
-  font-size: 30px;
+  font-size: 60px;
   background-color: transparent;
   border: none;
   color: #be4332;
@@ -13,6 +13,6 @@
   transition: font-size 1s ease-in-out;
 }
 .start_game:hover::after {
-  font-size: 60px;
+  font-size: 90px;
   content: 'Woof!';
 }
