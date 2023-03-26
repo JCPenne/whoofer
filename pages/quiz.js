@@ -1,19 +1,15 @@
 import React from 'react';
 
-//Import Data
 import Questions from '../data/questions.json';
 
-//Import Constants
 import { timeAllowance } from '@/constants';
 
-//Import Components
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
-import { Quiz } from '@/components/Quiz';
+import { Quiz } from '@/components/Quiz/Quiz';
 
 export default function QuizPage() {
-  //Declare State Variables
   const [time, setTime] = React.useState(timeAllowance);
   const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired
   const [quizStatus, setQuizStatus] = React.useState('idle'); // idle | active | end
@@ -21,10 +17,15 @@ export default function QuizPage() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
 
-  //Declare Global Variables
   const currentQuestion = Questions[questionNumber];
 
-  //Declare Functions
+  function handleQuizStart() {
+    setQuizStatus('active');
+    setTimeout(() => {
+      setTimerStatus('active');
+    }, 1000);
+  }
+
   function progressQuiz() {
     if (questionNumber === Questions.length - 1) {
       setQuizStatus('end');
@@ -72,35 +73,31 @@ export default function QuizPage() {
             questionNum={questionNumber}
             currentQuestion={currentQuestion}
             validateAnswer={validateAnswer}
-            CorrectAnswers={correctAnswers}
-            quizLength={Questions.length}
           ></Quiz>
-          <p>{time}</p>
         </>
       );
   }
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (time > 0 && timerStatus === 'active') {
-        setTime(prev => prev - 1);
-      }
-    }, 1000);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (time > 0 && timerStatus === 'active') {
+  //       setTime(prev => prev - 1);
+  //     }
+  //   }, 1000);
 
-    time === 0 && handleTimeExpired();
+  //   time === 0 && handleTimeExpired();
 
-    return () => {
-      clearInterval(interval);
-    };
-  });
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // });
 
   return (
     <>
       {quizStatus === 'idle' && (
         <GameLandingPage
           GameType='Quiz'
-          setGameStatus={setQuizStatus}
-          setTimerStatus={setTimerStatus}
+          handleGameStart={handleQuizStart}
         />
       )}
       {renderQuizComponent()}

@@ -16,3 +16,12 @@
   font-size: 90px;
   content: 'Woof!';
 }
+.answer {
+  border: none;
+  background-color: #be4332;
+  color: #f1eacf;
+  border-radius: 5px;
+  font-size: 2rem;
+  width: 300px;
+  height: 200px;
+}

@@ -5,7 +5,9 @@
 }
 
 html,
-body {
+body,
+#__next {
+  height: 100%;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -19,10 +21,6 @@ main {
 body {
   color: #be4332;
   background: #f1eacf;
-}
-
-p {
-  color: #f1eacf;
 }
 
 a {

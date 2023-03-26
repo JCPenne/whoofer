@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import styles from '@/styles/Home.module.css';
 
-import Button from '@/components/Button/Button';
-
 export default function Home() {
   return (
     <>

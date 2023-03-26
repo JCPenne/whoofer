@@ -4,15 +4,8 @@ import Button from '../Button/Button';
 
 export default function GameLandingPage({
   GameType,
-  setGameStatus,
-  setTimerStatus,
+  handleGameStart
 }) {
-  function handleGameStart() {
-    setGameStatus('active');
-    setTimeout(() => {
-      setTimerStatus('active');
-    }, 1000);
-  }
   return (
     <>
       <h1 className={styles.game_type}>{GameType}</h1>
@@ -23,7 +16,6 @@ export default function GameLandingPage({
         <br />
         Once you hit Start the countdown timer will begin! 
       </p>
-      <p>The game and timer will begin when you click Start</p>
       <Button
         onClick={handleGameStart}
         type='start_game'

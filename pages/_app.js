@@ -1,6 +1,6 @@
 import { Pacifico } from 'next/font/google';
 
-const pacifico = Pacifico({
+export const pacifico = Pacifico({
   weight: '400',
   subsets: ['latin'],
 });
