@@ -2,7 +2,8 @@ import React from 'react';
 
 import styles from './ProgressBar.module.css';
 
-export function ProgressBar({ percentComplete }) {
+function ProgressBar({ percentComplete }) {
+  console.log('Progress Bar Re-renders');
   return (
     <div className={styles.container}>
       <div
@@ -12,3 +13,5 @@ export function ProgressBar({ percentComplete }) {
     </div>
   );
 }
+
+export default React.memo(ProgressBar);

@@ -1,10 +1,9 @@
-import Button from '../Button/Button';
-
-import { Public_Sans } from 'next/font/google';
-
-const publicSans = Public_Sans({ subsets: ['latin'] });
 
 import styles from './QuizQuestion.module.css';
+import { Public_Sans } from 'next/font/google';
+const publicSans = Public_Sans({ subsets: ['latin'] });
+
+import Button from '../Button/Button';
 
 export function QuizQuestion({ currentQuestion, validateAnswer }) {
   return (

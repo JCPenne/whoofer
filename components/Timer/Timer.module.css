@@ -1,1 +1,17 @@
+.timer {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  background-color: hsla(7, 58%, 47%, 0.32);
+  animation: timer 1s linear 1s infinite;
+  color: #f1eacf;
+}
 
+@keyframes timer {
+  from {
+    background-color: hsla(7, 58%, 47%, 0.32);
+  }
+  to {
+    background-color: hsla(7, 58%, 47%, 1);
+  }
+}

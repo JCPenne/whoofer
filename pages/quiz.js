@@ -73,6 +73,7 @@ export default function QuizPage() {
             questionNum={questionNumber}
             currentQuestion={currentQuestion}
             validateAnswer={validateAnswer}
+            time={time}
           ></Quiz>
         </>
       );
