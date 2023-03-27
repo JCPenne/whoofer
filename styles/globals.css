@@ -6,7 +6,8 @@
 
 html,
 body,
-#__next {
+#__next,
+main {
   height: 100%;
   max-width: 100vw;
   overflow-x: hidden;

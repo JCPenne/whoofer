@@ -18,8 +18,10 @@ export default function QuizPage() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
   const [modalOpen, setModalOpen] = React.useState(false);
-  console.log(quizStatus);
+
   const currentQuestion = Questions[questionNumber];
+  const currentCorrectAnswer =
+    currentQuestion.options[currentQuestion.answer];
 
   // React.useEffect(() => {
   //   const interval = setInterval(() => {
@@ -74,7 +76,7 @@ export default function QuizPage() {
     setTimeout(() => {
       progressQuiz();
       setAnswerStatus(undefined);
-    }, 1000);
+    }, 2000);
   }
 
   function renderGameLandingPage() {
@@ -122,7 +124,10 @@ export default function QuizPage() {
       {renderHeader()}
       {renderQuizQuestions()}
       {answerStatus && (
-        <QuizQuestionResult answerStatus={answerStatus} />
+        <QuizQuestionResult
+          answerStatus={answerStatus}
+          correctAnswer={currentCorrectAnswer}
+        />
       )}
       {timerStatus === 'expired' && (
         <QuizQuestionResult timeExpired={true} />
