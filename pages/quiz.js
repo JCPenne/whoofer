@@ -65,7 +65,7 @@ export default function QuizPage() {
     if (
       quizStatus === 'active' &&
       !answerStatus &&
-      timerStatus === 'active'
+      (timerStatus === 'active' || 'paused')
     )
       return (
         <>
@@ -74,24 +74,25 @@ export default function QuizPage() {
             currentQuestion={currentQuestion}
             validateAnswer={validateAnswer}
             time={time}
+            setTimerStatus={setTimerStatus}
           ></Quiz>
         </>
       );
   }
 
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (time > 0 && timerStatus === 'active') {
-  //       setTime(prev => prev - 1);
-  //     }
-  //   }, 1000);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (time > 0 && timerStatus === 'active') {
+        setTime(prev => prev - 1);
+      }
+    }, 1000);
 
-  //   time === 0 && handleTimeExpired();
+    time === 0 && handleTimeExpired();
 
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // });
+    return () => {
+      clearInterval(interval);
+    };
+  });
 
   return (
     <>

@@ -14,15 +14,26 @@ export function Quiz({
   questionNum,
   validateAnswer,
   time,
+  setTimerStatus,
 }) {
   const [modalOpen, setModalOpen] = React.useState(false);
+
+  function handleClick() {
+    setModalOpen(!modalOpen);
+    setTimerStatus('paused');
+  }
   return (
     <>
-      {modalOpen && <Modal modalOpen={setModalOpen} />}
+      {modalOpen && (
+        <Modal
+          modalOpen={setModalOpen}
+          setTimerStatus={setTimerStatus}
+        />
+      )}
       <header className={styles.header}>
         <Button
           type='homepage-link'
-          onClick={() => setModalOpen(!modalOpen)}
+          onClick={() => handleClick()}
         >
           Whoofer
         </Button>
