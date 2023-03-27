@@ -1,11 +1,13 @@
+import React from 'react';
 
 import styles from './QuizQuestion.module.css';
+
 import { Public_Sans } from 'next/font/google';
 const publicSans = Public_Sans({ subsets: ['latin'] });
 
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 
-export function QuizQuestion({ currentQuestion, validateAnswer }) {
+export function QuizQuestions({ currentQuestion, validateAnswer }) {
   return (
     <div
       className={`${styles.mainWrapper} + ${publicSans.className}`}

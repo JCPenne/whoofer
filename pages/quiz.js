@@ -5,19 +5,35 @@ import Questions from '../data/questions.json';
 import { timeAllowance } from '@/constants';
 
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
+import { Header } from '@/components/Header/Header';
+import { QuizQuestions } from '@/components/QuizQuestions/QuizQuestions';
 import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
-import { Quiz } from '@/components/Quiz/Quiz';
 
 export default function QuizPage() {
   const [time, setTime] = React.useState(timeAllowance);
-  const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired
+  const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired | paused
   const [quizStatus, setQuizStatus] = React.useState('idle'); // idle | active | end
   const [answerStatus, setAnswerStatus] = React.useState(undefined); // undefined | correct | incorrect
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
-
+  const [modalOpen, setModalOpen] = React.useState(false);
+  console.log(quizStatus);
   const currentQuestion = Questions[questionNumber];
+
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (time > 0 && timerStatus === 'active') {
+  //       setTime(prev => prev - 1);
+  //     }
+  //   }, 1000);
+
+  //   time === 0 && handleTimeExpired();
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // });
 
   function handleQuizStart() {
     setQuizStatus('active');
@@ -61,48 +77,50 @@ export default function QuizPage() {
     }, 1000);
   }
 
-  function renderQuizComponent() {
+  function renderGameLandingPage() {
+    if (quizStatus === 'idle') {
+      return (
+        <GameLandingPage
+          GameType='Quiz'
+          handleGameStart={handleQuizStart}
+        />
+      );
+    }
+  }
+
+  function renderHeader() {
+    if (quizStatus === 'active') {
+      return (
+        <Header
+          time={time}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          setTimerStatus={setTimerStatus}
+          percentComplete={(questionNumber + 1) * 10}
+        />
+      );
+    }
+  }
+
+  function renderQuizQuestions() {
     if (
       quizStatus === 'active' &&
       !answerStatus &&
       (timerStatus === 'active' || 'paused')
     )
       return (
-        <>
-          <Quiz
-            questionNum={questionNumber}
-            currentQuestion={currentQuestion}
-            validateAnswer={validateAnswer}
-            time={time}
-            setTimerStatus={setTimerStatus}
-          ></Quiz>
-        </>
+        <QuizQuestions
+          currentQuestion={currentQuestion}
+          validateAnswer={validateAnswer}
+        />
       );
   }
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (time > 0 && timerStatus === 'active') {
-        setTime(prev => prev - 1);
-      }
-    }, 1000);
-
-    time === 0 && handleTimeExpired();
-
-    return () => {
-      clearInterval(interval);
-    };
-  });
-
   return (
     <>
-      {quizStatus === 'idle' && (
-        <GameLandingPage
-          GameType='Quiz'
-          handleGameStart={handleQuizStart}
-        />
-      )}
-      {renderQuizComponent()}
+      {renderGameLandingPage()}
+      {renderHeader()}
+      {renderQuizQuestions()}
       {answerStatus && (
         <QuizQuestionResult answerStatus={answerStatus} />
       )}
