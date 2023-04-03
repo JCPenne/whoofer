@@ -18,6 +18,7 @@ export default function QuizPage() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [percentComplete, setPercentComplete] = React.useState(0);
 
   const currentQuestion = Questions[questionNumber];
   const currentCorrectAnswer =
@@ -36,6 +37,20 @@ export default function QuizPage() {
   //     clearInterval(interval);
   //   };
   // });
+
+  React.useEffect(() => {
+    console.log(questionNumber);
+    if (questionNumber === 0) {
+      setPercentComplete(0);
+      return;
+    }
+    if (quizStatus === 'end') {
+      setPercentComplete(100);
+      return;
+    } else {
+      setPercentComplete((questionNumber / Questions.length) * 100);
+    }
+  }, [questionNumber, quizStatus]);
 
   function handleQuizStart() {
     setQuizStatus('active');
@@ -91,17 +106,18 @@ export default function QuizPage() {
   }
 
   function renderHeader() {
-    if (quizStatus === 'active') {
-      return (
-        <Header
-          time={time}
-          modalOpen={modalOpen}
-          setModalOpen={setModalOpen}
-          setTimerStatus={setTimerStatus}
-          percentComplete={(questionNumber + 1) * 10}
-        />
-      );
+    if (quizStatus === 'idle') {
+      return;
     }
+    return (
+      <Header
+        time={time}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        setTimerStatus={setTimerStatus}
+        percentComplete={percentComplete}
+      />
+    );
   }
 
   function renderQuizQuestions() {

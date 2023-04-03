@@ -8,5 +8,10 @@
     "question": "What dog is Husky?",
     "answer": 2,
     "options": ["Golden Retriever", "Greyhound", "Husky"]
+  },
+  {
+    "question": "What dog is Greyhound?",
+    "answer": 1,
+    "options": ["Golden Retriever", "Greyhound", "Husky"]
   }
 ]

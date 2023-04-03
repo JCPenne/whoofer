@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Button from '@/components/Button/Button';
+import { Button } from '@/components/Button/Button';
 
 export function QuizEnd({ quizLength, correctAnswers }) {
   const [showResults, setShowResults] = React.useState(false);
