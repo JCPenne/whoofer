@@ -39,7 +39,6 @@ export default function QuizPage() {
   // });
 
   React.useEffect(() => {
-    console.log(questionNumber);
     if (questionNumber === 0) {
       setPercentComplete(0);
       return;
