@@ -3,7 +3,7 @@ import FocusLock from 'react-focus-lock';
 
 import styles from './Modal.module.css';
 
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 import Link from 'next/link';
 
 export function Modal({ modalOpen, setTimerStatus }) {
