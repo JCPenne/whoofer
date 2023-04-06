@@ -2,42 +2,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  justify-content: space-between;
 }
 
 .title {
   color: #be4332;
-  font-size: 140px;
+  font-size: 10rem;
   background: none;
 }
 
 .description {
   color: #be4332;
-  font-size: 40px;
+  font-size: 3rem;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .buttonArray {
-  position: absolute;
   width: 100vw;
-  height: 100vh;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-around;
-  padding: 0;
-  margin: 0;
 }
 
 .link {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
   width: calc(100% / 3);
   height: 350px;
-  font-family: inherit;
-  font-size: 30px;
+  font-size: 2rem;
   background: linear-gradient(
     #f1eacf,
     #f1eacf 50%,
@@ -46,12 +39,12 @@
   );
   background-size: 100% 200%;
   border: none;
-  color: #be4332;
+  color: inherit;
   transition: background 1.5s;
 }
 .link_label {
   animation-name: floating;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   margin-top: 50px;
@@ -66,16 +59,15 @@
   animation-play-state: paused;
 }
 .game_blurb__primary {
-  font-size: 20px;
+  font-size: 2rem;
   text-align: center;
-  height: 5rem;
   color: #f1eacf;
 }
 .game_blurb__secondary {
-  font-size: 15px;
+  font-size: 1rem;
   text-align: center;
-  height: 5rem;
   color: #f1eacf;
+  margin-top: -40px;
 }
 @keyframes floating {
   0% {

@@ -7,7 +7,7 @@ export default function GameLandingPage({
   handleGameStart,
 }) {
   return (
-    <>
+    <div className={styles.landingPageMain}>
       <h1 className={styles.game_type}>{GameType}</h1>
       <p className={styles.game_blurb}>
         You will be asked 10 breed-specific questions
@@ -20,6 +20,6 @@ export default function GameLandingPage({
         onClick={handleGameStart}
         type='start_game'
       ></Button>
-    </>
+    </div>
   );
 }

@@ -55,7 +55,7 @@ export default function QuizPage() {
     setQuizStatus('active');
     setTimeout(() => {
       setTimerStatus('active');
-    }, 1000);
+    }, 2000);
   }
 
   function progressQuiz() {
@@ -73,7 +73,7 @@ export default function QuizPage() {
     setTime(timeAllowance);
     setTimeout(() => {
       progressQuiz();
-    }, 1000);
+    }, 2000);
   }
 
   function validateAnswer(answerValue) {
@@ -123,7 +123,8 @@ export default function QuizPage() {
     if (
       quizStatus === 'active' &&
       !answerStatus &&
-      (timerStatus === 'active' || 'paused')
+      timerStatus !== 'expired' &&
+      timerStatus !== 'idle'
     )
       return (
         <QuizQuestions
@@ -145,7 +146,7 @@ export default function QuizPage() {
         />
       )}
       {timerStatus === 'expired' && (
-        <QuizQuestionResult timeExpired={true} />
+        <QuizQuestionResult answerStatus='expired' />
       )}
       {quizStatus === 'end' && (
         <QuizEnd
