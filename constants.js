@@ -1,1 +1,1 @@
-export const timeAllowance = 3;
+export const timeAllowance = 15;

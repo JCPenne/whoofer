@@ -1,17 +1,56 @@
 [
   {
-    "question": "What dog is Golden?",
+    "question": "Which breed has topped the AKC Most Popular Breed list for 30+ consecutive years?",
     "answer": 0,
-    "options": ["Golden Retriever", "Greyhound", "Husky"]
+    "options": ["Labrador Retriever", "Poodle", "Bulldog"]
   },
   {
-    "question": "What dog is Husky?",
+    "question": "This is the only remaining 1934 top five breed that remains in the top five today.",
     "answer": 2,
-    "options": ["Golden Retriever", "Greyhound", "Husky"]
+    "options": ["Poodle", "Border Collie", "Beagle"]
   },
   {
-    "question": "What dog is Greyhound?",
+    "question": "The name for this breed originates from the word Black, which signified the faces of the animals they often tend to.",
+    "answer": 0,
+    "options": ["Collie", "Akita", "Komondor"]
+  },
+  {
+    "question": "In 2023 this breed won 1st place in AKC's Most Popular Breed list, usurping the 30+ year champion.",
     "answer": 1,
-    "options": ["Golden Retriever", "Greyhound", "Husky"]
+    "options": ["Chihuahua", "French Bulldog", "Golden Retreiver"]
+  },
+  {
+    "question": "While often thought of as Barkless, this breed can actually growl and even yodel!",
+    "answer": 0,
+    "options": ["Basenji", "Great Pyrenees", "Shiba Inu"]
+  },
+  {
+    "question": "Over a 1 mile race this breed can outpace a cheetah",
+    "answer": 2,
+    "options": ["Saluki", "Vizsla", "Greyhound"]
+  },
+  {
+    "question": "This breed's sense of smell is so accurate that it's tracking results can be used in a court of law",
+    "answer": 2,
+    "options": ["Basset Hound", "Bluetick Coonhound", "Bloodhound"]
+  },
+  {
+    "question": "This breed is one of only two that has a black tongue.",
+    "answer": 1,
+    "options": ["Pomeranian", "Sharpei", "Dalmation"]
+  },
+  {
+    "question": "This breed does not actually originate from the country of its name and was developed in the United States.",
+    "answer": 0,
+    "options": [
+      "Australian Shepherd",
+      "German Shepherd",
+      "Afghan Hound"
+    ]
+  },
+  {
+    "question": "The thick double coat of this breed allows them to survive in extreme weather conditiosn",
+    "answer": 0,
+    "options": ["Siberian Husky", "St Bernard", "Great Pyrenees"]
   }
 ]

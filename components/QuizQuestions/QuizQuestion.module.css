@@ -14,5 +14,9 @@
   justify-content: space-evenly;
 }
 .question {
-  font-size: 5rem;
+  font-size: 4rem;
+  padding-left: 200px;
+  padding-right: 200px;
+  text-align: center;
+  line-height: 1.5;
 }

@@ -32,7 +32,9 @@ export default function Home() {
             Test your dog breed knowledge
           </p>
           <p className={styles.game_blurb__secondary}>
-            60 seconds to answer 10 questions
+            10 breed-specific questions
+            <br/>
+            15 seconds per question!
           </p>
           <h3 className={styles.link_label}>Quiz</h3>
         </Link>

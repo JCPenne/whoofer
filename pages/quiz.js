@@ -55,7 +55,7 @@ export default function QuizPage() {
     setQuizStatus('active');
     setTimeout(() => {
       setTimerStatus('active');
-    }, 2000);
+    }, 1500);
   }
 
   function progressQuiz() {
@@ -73,7 +73,7 @@ export default function QuizPage() {
     setTime(timeAllowance);
     setTimeout(() => {
       progressQuiz();
-    }, 2000);
+    }, 2500);
   }
 
   function validateAnswer(answerValue) {
@@ -90,7 +90,7 @@ export default function QuizPage() {
     setTimeout(() => {
       progressQuiz();
       setAnswerStatus(undefined);
-    }, 2000);
+    }, 2500);
   }
 
   function renderGameLandingPage() {
