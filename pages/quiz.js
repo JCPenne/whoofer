@@ -12,47 +12,42 @@ import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
 
 export default function QuizPage() {
-  
-
   const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired | paused
   const [quizStatus, setQuizStatus] = React.useState('idle'); // idle | active | end
-
+  console.log('quizStatus', quizStatus);
   const [currentQuestion, setCurrentQuestion] = React.useState({});
   const [usedQuestions, setUsedQuestions] = React.useState([]);
+  console.log(currentQuestion);
 
   const [answerStatus, setAnswerStatus] = React.useState(undefined); // undefined | correct | incorrect
-  const [questionCount, setquestionCount] = React.useState(0);
+  const [questionCount, setQuestionCount] = React.useState(undefined);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
-  const [percentComplete, setPercentComplete] = React.useState(0);
 
   const [modalOpen, setModalOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    if (questionCount === 0) {
-      setPercentComplete(0);
-      return;
+  const populateQuestion = () => {
+    const [randomNum, randomQuestion] =
+      getRandomQuestion(usedQuestions);
+
+    setCurrentQuestion(randomQuestion);
+
+    if (!usedQuestions.includes(randomNum)) {
+      setUsedQuestions(prev => [...prev, randomNum]);
     }
-    if (quizStatus === 'end') {
-      setPercentComplete(100);
-      return;
-    } else {
-      setPercentComplete((questionCount / Questions.length) * 100);
-    }
-  }, [questionCount, quizStatus]);
+  };
 
   function handleQuizStart() {
     setQuizStatus('active');
     setTimerStatus('active');
+    setQuestionCount(0);
+    populateQuestion();
   }
 
   function validateAnswer(answerValue) {
     setTimerStatus('idle');
-    setTime(timeAllowance);
 
-    console.log("answerValue from validate Answer function",answerValue)
-
-    const { options, answer } = currentQuestion;
-    if (answerValue === options[answer]) {
+    const { answer } = currentQuestion;
+    if (answerValue === answer) {
       setAnswerStatus('correct');
       setCorrectAnswers(correctAnswers + 1);
     } else {
@@ -65,25 +60,24 @@ export default function QuizPage() {
   }
 
   function progressQuiz() {
-    setUsedQuestions(prev => [...prev, randomNum]);
-    if (questionCount === Questions.length - 1) {
+    if (questionCount === Questions.length) {
       setQuizStatus('end');
       setTimerStatus('idle');
     } else {
-      setquestionCount(questionCount + 1);
+      setQuestionCount(questionCount + 1);
+      populateQuestion();
       setTimerStatus('active');
     }
   }
 
   function handleTimeExpired() {
     setTimerStatus('expired');
-    
     setTimeout(() => {
-      progressQuiz();
-    }, 2500);
+      setTimerStatus('idle')
+      setQuizStatus('end');
+
+    }, 2000);
   }
-
-
 
   function renderGameLandingPage() {
     if (quizStatus === 'idle') {
@@ -106,8 +100,9 @@ export default function QuizPage() {
         setModalOpen={setModalOpen}
         timerStatus={timerStatus}
         setTimerStatus={setTimerStatus}
-        percentComplete={percentComplete}
         handleTimeExpired={handleTimeExpired}
+        questionCount={questionCount}
+        quizStatus={quizStatus}
       />
     );
   }
@@ -131,7 +126,7 @@ export default function QuizPage() {
     <>
       {renderGameLandingPage()}
       {renderHeader()}
-      {/* {renderQuizQuestions()} */}
+      {renderQuizQuestions()}
       {answerStatus && (
         <QuizQuestionResult
           answerStatus={answerStatus}
