@@ -15,13 +15,16 @@ export default function Timer({ timerStatus, handleTimeExpired }) {
         }
       }, 1000);
 
-      time === 0 && handleTimeExpired();
+      if (time === 0) {
+        setTime(timeAllowance);
+        handleTimeExpired();
+      } 
 
       return () => {
         clearInterval(interval);
       };
     }
-  });
+  },[time,setTime,handleTimeExpired,timerStatus]);
 
   return (
     <div className={`${styles.timer} ${timerStatus === 'active' && styles.active}`}>

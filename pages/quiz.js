@@ -77,7 +77,7 @@ export default function QuizPage() {
 
   function handleTimeExpired() {
     setTimerStatus('expired');
-    setTime(timeAllowance);
+    
     setTimeout(() => {
       progressQuiz();
     }, 2500);
