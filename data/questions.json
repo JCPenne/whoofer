@@ -1,47 +1,47 @@
 [
   {
     "question": "Which breed has topped the AKC Most Popular Breed list for 30+ consecutive years?",
-    "answer": 0,
+    "answer": "Labrador Retriever",
     "options": ["Labrador Retriever", "Poodle", "Bulldog"]
   },
   {
     "question": "This is the only remaining 1934 top five breed that remains in the top five today.",
-    "answer": 2,
+    "answer": "Beagle",
     "options": ["Poodle", "Border Collie", "Beagle"]
   },
   {
     "question": "The name for this breed originates from the word Black, which signified the faces of the animals they often tend to.",
-    "answer": 0,
+    "answer": "Collie",
     "options": ["Collie", "Akita", "Komondor"]
   },
   {
     "question": "In 2023 this breed won 1st place in AKC's Most Popular Breed list, usurping the 30+ year champion.",
-    "answer": 1,
+    "answer": "French Bulldog",
     "options": ["Chihuahua", "French Bulldog", "Golden Retreiver"]
   },
   {
     "question": "While often thought of as Barkless, this breed can actually growl and even yodel!",
-    "answer": 0,
+    "answer": "Basenji",
     "options": ["Basenji", "Great Pyrenees", "Shiba Inu"]
   },
   {
-    "question": "Over a 1 mile race this breed can outpace a cheetah",
-    "answer": 2,
+    "question": "In a 1 mile race this breed can outpace a cheetah",
+    "answer": "Greyhound",
     "options": ["Saluki", "Vizsla", "Greyhound"]
   },
   {
     "question": "This breed's sense of smell is so accurate that it's tracking results can be used in a court of law",
-    "answer": 2,
+    "answer": "Bloodhound",
     "options": ["Basset Hound", "Bluetick Coonhound", "Bloodhound"]
   },
   {
     "question": "This breed is one of only two that has a black tongue.",
-    "answer": 1,
+    "answer": "Sharpei",
     "options": ["Pomeranian", "Sharpei", "Dalmation"]
   },
   {
     "question": "This breed does not actually originate from the country of its name and was developed in the United States.",
-    "answer": 0,
+    "answer": "Australian Shepherd",
     "options": [
       "Australian Shepherd",
       "German Shepherd",
@@ -50,12 +50,12 @@
   },
   {
     "question": "The thick double coat of this breed allows them to survive in extreme weather conditions.",
-    "answer": 0,
+    "answer": "Siberian Husky",
     "options": ["Siberian Husky", "St Bernard", "Great Pyrenees"]
   },
   {
     "question": "These dogs were initially bred for Truffle Hunting!",
-    "answer": 2,
+    "answer": "Lagotto Romagnolos",
     "options": [
       "Brussels Griffon",
       "Lhasa Apsos",
@@ -64,22 +64,22 @@
   },
   {
     "question": "Originally used as herding dogs, this breed has a distinctive corded coat that forms dreadlocks.",
-    "answer": 1,
+    "answer": "Puli",
     "options": ["Samoyed", "Puli", "Finnish Spitz"]
   },
   {
     "question": "These dogs excel in the water and are known for their webbed feet.",
-    "answer": 1,
+    "answer": "NewFoundland",
     "options": ["Vizsla", "NewFoundland", "Shiba Inu"]
   },
   {
     "question": "Except for a tuft of hair on their head and tail, this breed is completely hairless.",
-    "answer": 2,
+    "answer": "Xoloitzcuintlis",
     "options": ["Bull Terrier", "Azawakh", "Xoloitzcuintlis"]
   },
   {
     "question": "Originally bred in France as companion dogs, this dog's name is German for \"little lion.\"",
-    "answer": 0,
+    "answer": "Leonberger",
     "options": ["Leonberger", "Lowchen", "Hovawart"]
   }
 ]

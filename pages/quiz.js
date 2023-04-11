@@ -3,6 +3,7 @@ import React from 'react';
 import Questions from '../data/questions.json';
 
 import { timeAllowance } from '@/constants';
+import { getRandomQuestion } from '@/utils';
 
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { Header } from '@/components/Header/Header';
@@ -11,35 +12,23 @@ import { QuizEnd } from '@/components/QuizEnd/QuizEnd';
 import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestionResult';
 
 export default function QuizPage() {
-  const [time, setTime] = React.useState(timeAllowance);
+  
+
   const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired | paused
   const [quizStatus, setQuizStatus] = React.useState('idle'); // idle | active | end
+
+  const [currentQuestion, setCurrentQuestion] = React.useState({});
+  const [usedQuestions, setUsedQuestions] = React.useState([]);
+
   const [answerStatus, setAnswerStatus] = React.useState(undefined); // undefined | correct | incorrect
-  const [questionNumber, setQuestionNumber] = React.useState(0);
+  const [questionCount, setquestionCount] = React.useState(0);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
-  const [modalOpen, setModalOpen] = React.useState(false);
   const [percentComplete, setPercentComplete] = React.useState(0);
 
-  const currentQuestion = Questions[questionNumber];
-  const currentCorrectAnswer =
-    currentQuestion.options[currentQuestion.answer];
-
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (time > 0 && timerStatus === 'active') {
-  //       setTime(prev => prev - 1);
-  //     }
-  //   }, 1000);
-
-  //   time === 0 && handleTimeExpired();
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // });
+  const [modalOpen, setModalOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if (questionNumber === 0) {
+    if (questionCount === 0) {
       setPercentComplete(0);
       return;
     }
@@ -47,38 +36,20 @@ export default function QuizPage() {
       setPercentComplete(100);
       return;
     } else {
-      setPercentComplete((questionNumber / Questions.length) * 100);
+      setPercentComplete((questionCount / Questions.length) * 100);
     }
-  }, [questionNumber, quizStatus]);
+  }, [questionCount, quizStatus]);
 
   function handleQuizStart() {
     setQuizStatus('active');
-    setTimeout(() => {
-      setTimerStatus('active');
-    }, 1500);
-  }
-
-  function progressQuiz() {
-    if (questionNumber === Questions.length - 1) {
-      setQuizStatus('end');
-      setTimerStatus('idle');
-    } else {
-      setQuestionNumber(questionNumber + 1);
-      setTimerStatus('active');
-    }
-  }
-
-  function handleTimeExpired() {
-    setTimerStatus('expired');
-    setTime(timeAllowance);
-    setTimeout(() => {
-      progressQuiz();
-    }, 2500);
+    setTimerStatus('active');
   }
 
   function validateAnswer(answerValue) {
     setTimerStatus('idle');
     setTime(timeAllowance);
+
+    console.log("answerValue from validate Answer function",answerValue)
 
     const { options, answer } = currentQuestion;
     if (answerValue === options[answer]) {
@@ -92,6 +63,27 @@ export default function QuizPage() {
       setAnswerStatus(undefined);
     }, 2500);
   }
+
+  function progressQuiz() {
+    setUsedQuestions(prev => [...prev, randomNum]);
+    if (questionCount === Questions.length - 1) {
+      setQuizStatus('end');
+      setTimerStatus('idle');
+    } else {
+      setquestionCount(questionCount + 1);
+      setTimerStatus('active');
+    }
+  }
+
+  function handleTimeExpired() {
+    setTimerStatus('expired');
+    setTime(timeAllowance);
+    setTimeout(() => {
+      progressQuiz();
+    }, 2500);
+  }
+
+
 
   function renderGameLandingPage() {
     if (quizStatus === 'idle') {
@@ -110,11 +102,12 @@ export default function QuizPage() {
     }
     return (
       <Header
-        time={time}
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
+        timerStatus={timerStatus}
         setTimerStatus={setTimerStatus}
         percentComplete={percentComplete}
+        handleTimeExpired={handleTimeExpired}
       />
     );
   }
@@ -138,11 +131,11 @@ export default function QuizPage() {
     <>
       {renderGameLandingPage()}
       {renderHeader()}
-      {renderQuizQuestions()}
+      {/* {renderQuizQuestions()} */}
       {answerStatus && (
         <QuizQuestionResult
           answerStatus={answerStatus}
-          correctAnswer={currentCorrectAnswer}
+          correctAnswer={currentQuestion.answer}
         />
       )}
       {timerStatus === 'expired' && (

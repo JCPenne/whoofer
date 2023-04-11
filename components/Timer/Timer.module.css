@@ -4,13 +4,15 @@
   height: 75px;
   border-radius: 100%;
   background-color: hsla(7, 58%, 47%, 0.32);
-  animation: timer 1s linear 1s infinite;
   color: #f1eacf;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 12px;
   font-size: 3rem;
+}
+.active {
+  animation: timer 1s linear 1s infinite;
 }
 
 @keyframes timer {

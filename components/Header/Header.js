@@ -10,9 +10,10 @@ import Timer from '../Timer/Timer';
 export function Header({
   modalOpen,
   setModalOpen,
-  time,
+  timerStatus,
   setTimerStatus,
   percentComplete,
+  handleTimeExpired,
 }) {
   function handleClick() {
     setModalOpen(!modalOpen);
@@ -35,7 +36,7 @@ export function Header({
           Whoofer
         </Button>
         <ProgressBar percentComplete={percentComplete} />
-        <Timer time={time} />
+        <Timer timerStatus={timerStatus} handleTimeExpired={handleTimeExpired} />
       </header>
     </>
   );
