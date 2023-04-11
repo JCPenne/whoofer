@@ -49,8 +49,37 @@
     ]
   },
   {
-    "question": "The thick double coat of this breed allows them to survive in extreme weather conditiosn",
+    "question": "The thick double coat of this breed allows them to survive in extreme weather conditions.",
     "answer": 0,
     "options": ["Siberian Husky", "St Bernard", "Great Pyrenees"]
+  },
+  {
+    "question": "These dogs were initially bred for Truffle Hunting!",
+    "answer": 2,
+    "options": [
+      "Brussels Griffon",
+      "Lhasa Apsos",
+      "Lagotto Romagnolos"
+    ]
+  },
+  {
+    "question": "Originally used as herding dogs, this breed has a distinctive corded coat that forms dreadlocks.",
+    "answer": 1,
+    "options": ["Samoyed", "Puli", "Finnish Spitz"]
+  },
+  {
+    "question": "These dogs excel in the water and are known for their webbed feet.",
+    "answer": 1,
+    "options": ["Vizsla", "NewFoundland", "Shiba Inu"]
+  },
+  {
+    "question": "Except for a tuft of hair on their head and tail, this breed is completely hairless.",
+    "answer": 2,
+    "options": ["Bull Terrier", "Azawakh", "Xoloitzcuintlis"]
+  },
+  {
+    "question": "Originally bred in France as companion dogs, this dog's name is German for \"little lion.\"",
+    "answer": 0,
+    "options": ["Leonberger", "Lowchen", "Hovawart"]
   }
 ]
