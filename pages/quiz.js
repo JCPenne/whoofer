@@ -14,14 +14,14 @@ import { QuizQuestionResult } from '@/components/QuizQuestionResult/QuizQuestion
 export default function QuizPage() {
   const [timerStatus, setTimerStatus] = React.useState('idle'); // idle | active | expired | paused
   const [quizStatus, setQuizStatus] = React.useState('idle'); // idle | active | end
-  console.log('quizStatus', quizStatus);
+
   const [currentQuestion, setCurrentQuestion] = React.useState({});
   const [usedQuestions, setUsedQuestions] = React.useState([]);
-  console.log(currentQuestion);
 
   const [answerStatus, setAnswerStatus] = React.useState(undefined); // undefined | correct | incorrect
   const [questionCount, setQuestionCount] = React.useState(undefined);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
+  console.log('questionCount',questionCount);
 
   const [modalOpen, setModalOpen] = React.useState(false);
 
@@ -60,7 +60,7 @@ export default function QuizPage() {
   }
 
   function progressQuiz() {
-    if (questionCount === Questions.length) {
+    if (questionCount === Questions.length - 1) {
       setQuizStatus('end');
       setTimerStatus('idle');
     } else {

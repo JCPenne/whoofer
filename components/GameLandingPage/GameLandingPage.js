@@ -10,9 +10,9 @@ export default function GameLandingPage({
     <div className={styles.landingPageMain}>
       <h1 className={styles.game_type}>{GameType}</h1>
       <p className={styles.game_blurb}>
-        You will be asked 10 breed-specific questions
+        We have gathered 15 breed-specific questions for you!
         <br />
-        You have 15 seconds to answer each question.
+        You will have 90 seconds to answer as many questions as you can.
         <br />
         Once you hit Start the countdown timer will begin!
       </p>
