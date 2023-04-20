@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import Link from 'next/link';
 
 import styles from '@/styles/Home.module.css';
+
+import { GameLink } from '@/components/GameLink/GameLink';
 
 export default function Home() {
   return (
@@ -24,42 +25,24 @@ export default function Home() {
         Pick a game to get started!
       </p>
       <div className={styles.buttonArray}>
-        <Link
-          href='/quiz'
-          className={styles.link}
-        >
-          <p className={styles.game_blurb__primary}>
-            Test your dog breed knowledge
-          </p>
-          <p className={styles.game_blurb__secondary}>
-            15 breed-specific questions in 90 seconds!
-          </p>
-          <h3 className={styles.link_label}>Quiz</h3>
-        </Link>
-        <Link
-          href='/Fetch'
-          className={styles.link}
-        >
-          <p className={styles.game_blurb__primary}>
-            Fetch is still in training
-          </p>
-          <p className={styles.game_blurb__secondary}>
-            We&apos;re excited too!
-          </p>
-          <h3 className={styles.link_label}>Fetch</h3>
-        </Link>
-        <Link
-          href='/HideAndSeek'
-          className={styles.link}
-        >
-          <p className={styles.game_blurb__primary}>
-            We haven&apos;t learnt how to hide yet!
-          </p>
-          <p className={styles.game_blurb__secondary}>
-            Once we do you&apos;ll never find us!
-          </p>
-          <h3 className={styles.link_label}>Hide & Seek</h3>
-        </Link>
+        <GameLink
+          destination='quiz'
+          title='Quiz'
+          blurbPrimary='Test your dog breed knowledge'
+          blurbSecondary='15 breed-specific questions in 90 seconds!'
+        />
+        <GameLink 
+          destination='fetch'
+          title='Fetch'
+          blurbPrimary='Fetch is still in training'
+          blurbSecondary='We&apos;re excited too!'
+        />
+        <GameLink 
+          destination='HideAndSeek'
+          title='Hide & Seek'
+          blurbPrimary='We haven&apos;t learnt how to hide yet!'
+          blurbSecondary='Once we do you&apos;ll never find us!'
+        />
       </div>
     </>
   );
