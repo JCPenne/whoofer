@@ -1,4 +1,4 @@
-import Questions from './data/questions.json';
+import Questions from '../data/questions.json';
 
 export function getRandomQuestion(usedQuestions) {
   let max = Questions.length - 1;

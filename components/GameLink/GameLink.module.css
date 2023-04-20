@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: calc(100% / 3);
+  height: 300px;
   font-size: 2rem;
   background: linear-gradient(
     #f1eacf,
@@ -15,6 +16,23 @@
   color: inherit;
   transition: background 1.5s;
   overflow: auto;
+  justify-content: flex-end;
+}
+.wrapper:hover {
+  background-position: 100% 100%;
+  color: #f1eacf;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+.wrapper:hover > .primaryBlurb {
+  display: block;
+}
+.wrapper:hover > .secondaryBlurb {
+  display: block;
+}
+.wrapper:hover > .title {
+  animation-play-state: paused;
 }
 .title {
   animation-name: floating;
@@ -38,23 +56,6 @@
   color: #f1eacf;
 }
 
-.wrapper:hover {
-  background-position: 100% 100%;
-  color: #f1eacf;
-  padding-top: 50px;
-  padding-bottom: 100px;
-  justify-content: space-evenly;
-  height: 500px;
-}
-.wrapper:hover > .primaryBlurb {
-  display: block;
-}
-.wrapper:hover > .secondaryBlurb {
-  display: block;
-}
-.wrapper:hover > title {
-  animation-play-state: paused;
-}
 
 @keyframes floating {
   0% {

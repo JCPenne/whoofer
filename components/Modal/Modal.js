@@ -5,6 +5,7 @@ import styles from './Modal.module.css';
 
 import { Button } from '../Button/Button';
 import Link from 'next/link';
+import { josefinSans } from '@/pages/_app';
 
 export function Modal({ modalOpen, setTimerStatus }) {
   React.useEffect(() => {
@@ -31,7 +32,7 @@ export function Modal({ modalOpen, setTimerStatus }) {
           }}
         />
         <div className={styles.dialog}>
-          <p className={styles.text}>
+          <p className={`${styles.text} ${josefinSans.className}`}>
             Are you sure you would like to exit the quiz?
           </p>
           <div className={styles.buttonGroup}>
