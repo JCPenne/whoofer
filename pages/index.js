@@ -4,6 +4,8 @@ import styles from '@/styles/Home.module.css';
 
 import { GameLink } from '@/components/GameLink/GameLink';
 
+import { josefinSans } from './_app';
+
 export default function Home() {
   return (
     <>
@@ -19,7 +21,7 @@ export default function Home() {
         />
       </Head>
       <h1 className={styles.title}>Whoofer</h1>
-      <p className={styles.description}>
+      <p className={`${styles.description} ${josefinSans.className}`}>
         The Dog Quiz made by dogs for humans.
         <br />
         Pick a game to get started!

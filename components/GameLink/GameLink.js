@@ -1,3 +1,4 @@
+import { josefinSans } from '@/pages/_app';
 import styles from './GameLink.module.css';
 import Link from 'next/link';
 
@@ -10,11 +11,11 @@ export function GameLink({
   return (
     <Link
       href={`/${destination}`}
-      className={styles.link}
+      className={styles.wrapper}
     >
-      <h3 className={styles.link_label}>{title}</h3>
-      <p className={styles.game_blurb__primary}>{blurbPrimary}</p>
-      <p className={styles.game_blurb__secondary}>{blurbSecondary}</p>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={`${styles.primaryBlurb} ${josefinSans.className}`}>{blurbPrimary}</p>
+      <p className={`${styles.secondaryBlurb} ${josefinSans.className}`}>{blurbSecondary}</p>
     </Link>
   );
 }

@@ -2,8 +2,7 @@ import React from 'react';
 
 import Questions from '../data/questions.json';
 
-import { timeAllowance } from '@/constants';
-import { getRandomQuestion } from '@/utils';
+import { getRandomQuestion } from '@/utils/getRandomQuestion';
 
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { Header } from '@/components/Header/Header';

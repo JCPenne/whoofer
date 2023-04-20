@@ -1,8 +1,7 @@
-.link {
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
   width: calc(100% / 3);
   font-size: 2rem;
   background: linear-gradient(
@@ -17,7 +16,7 @@
   transition: background 1.5s;
   overflow: auto;
 }
-.link_label {
+.title {
   animation-name: floating;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
@@ -25,24 +24,38 @@
   margin-top: 50px;
   padding-bottom: 25px;
 }
-.link:hover {
-  background-position: 100% 100%;
-  color: #f1eacf;
-}
 
-.link:hover > .link_label {
-  animation-play-state: paused;
-}
-.game_blurb__primary {
+.primaryBlurb {
+  display: none;
   font-size: 2rem;
   text-align: center;
   color: #f1eacf;
 }
-.game_blurb__secondary {
+.secondaryBlurb {
+  display: none;
   font-size: 1rem;
   text-align: center;
   color: #f1eacf;
 }
+
+.wrapper:hover {
+  background-position: 100% 100%;
+  color: #f1eacf;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  justify-content: space-evenly;
+  height: 500px;
+}
+.wrapper:hover > .primaryBlurb {
+  display: block;
+}
+.wrapper:hover > .secondaryBlurb {
+  display: block;
+}
+.wrapper:hover > title {
+  animation-play-state: paused;
+}
+
 @keyframes floating {
   0% {
     transform: translate(0, 0px);
