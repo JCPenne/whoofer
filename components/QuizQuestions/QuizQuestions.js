@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './QuizQuestion.module.css';
+import styles from './QuizQuestions.module.css';
 
 import { Public_Sans } from 'next/font/google';
 const publicSans = Public_Sans({ subsets: ['latin'] });
