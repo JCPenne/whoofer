@@ -9,20 +9,20 @@ export default function Timer({ timerStatus, handleTimeExpired }) {
 
   React.useEffect(() => {
     if (timerStatus === 'active') {
-      // const interval = setInterval(() => {
-      //   if (time > 0) {
-      //     setTime(prev => prev - 1);
-      //   }
-      // }, 1000);
+      const interval = setInterval(() => {
+        if (time > 0) {
+          setTime(prev => prev - 1);
+        }
+      }, 1000);
 
       if (time === 0) {
         setTime(timeAllowance);
         handleTimeExpired();
       }
 
-      // return () => {
-      //   clearInterval(interval);
-      // };
+      return () => {
+        clearInterval(interval);
+      };
     }
   }, [time, setTime, handleTimeExpired, timerStatus]);
 
