@@ -55,12 +55,15 @@
   animation-timing-function: ease-in-out;
   margin-top: 50px;
   padding-bottom: 25px;
+  position: relative;
+  bottom: 40px;
 
   @media (max-width: 500px) {
     animation-name: none;
     margin-top: inherit;
     padding-bottom: inherit;
     font-size: 1rem;
+    position: revert;
   }
 }
 

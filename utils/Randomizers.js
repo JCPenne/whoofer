@@ -10,3 +10,15 @@ export function getRandomQuestion(usedQuestions) {
   }
   return [randomNum, Questions[randomNum]];
 }
+
+export function randomizeAnswers(answers) {
+  let oldElement;
+
+  for (let i = answers.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    oldElement = answers[i];
+    answers[i] = answers[j];
+    answers[j] = oldElement;
+  }
+  return answers;
+}

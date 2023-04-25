@@ -2,7 +2,7 @@ import React from 'react';
 
 import Questions from '../data/questions.json';
 
-import { getRandomQuestion } from '@/utils/getRandomQuestion';
+import { getRandomQuestion } from '@/utils/Randomizers';
 
 import GameLandingPage from '@/components/GameLandingPage/GameLandingPage';
 import { Header } from '@/components/Header/Header';
@@ -54,7 +54,7 @@ export default function QuizPage() {
     setTimeout(() => {
       progressQuiz();
       setAnswerStatus(undefined);
-    }, 2500);
+    }, 1500);
   }
 
   function progressQuiz() {

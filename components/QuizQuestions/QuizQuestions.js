@@ -1,4 +1,5 @@
 import React from 'react';
+import { randomizeAnswers } from '@/utils/Randomizers';
 
 import styles from './QuizQuestions.module.css';
 
@@ -17,17 +18,19 @@ export function QuizQuestions({ currentQuestion, validateAnswer }) {
         {currentQuestion.question}
       </p>
       <section className={styles.answerWrapper}>
-        {currentQuestion.options.map((answerValue, index) => {
-          return (
-            <Button
-              type='answer'
-              key={index}
-              onClick={() => validateAnswer(answerValue)}
-            >
-              {answerValue}
-            </Button>
-          );
-        })}
+        {randomizeAnswers(currentQuestion.options).map(
+          (answerValue, index) => {
+            return (
+              <Button
+                type='answer'
+                key={index}
+                onClick={() => validateAnswer(answerValue)}
+              >
+                {answerValue}
+              </Button>
+            );
+          }
+        )}
       </section>
     </div>
   );
