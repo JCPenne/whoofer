@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import { Pacifico, Josefin_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
 export const pacifico = Pacifico({
   weight: '400',
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
   return (
     <main className={pacifico.className}>
       <Component {...pageProps} />
+      <Analytics />
     </main>
   );
 }
