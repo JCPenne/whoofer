@@ -20,7 +20,6 @@ export default function QuizPage() {
   const [answerStatus, setAnswerStatus] = React.useState(undefined); // undefined | correct | incorrect
   const [questionCount, setQuestionCount] = React.useState(undefined);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
-  console.log('questionCount',questionCount);
 
   const [modalOpen, setModalOpen] = React.useState(false);
 
@@ -72,9 +71,8 @@ export default function QuizPage() {
   function handleTimeExpired() {
     setTimerStatus('expired');
     setTimeout(() => {
-      setTimerStatus('idle')
+      setTimerStatus('idle');
       setQuizStatus('end');
-
     }, 2000);
   }
 
@@ -144,5 +142,3 @@ export default function QuizPage() {
     </>
   );
 }
-
-

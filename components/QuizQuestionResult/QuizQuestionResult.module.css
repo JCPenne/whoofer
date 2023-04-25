@@ -1,12 +1,3 @@
-.answerBlock {
-  display: flex;
-  align-items: center;
-  width: 90%;
-  height: 65%;
-  border-radius: 5px;
-  position: relative;
-  top: 20%;
-}
 .correct {
   justify-content: center;
   background-color: hsla(7, 58%, 47%, 1);
@@ -24,13 +15,49 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
 }
 .mainText {
   font-size: 5rem;
+
+  @media (max-width: 500px) {
+    font-size: 3rem;
+    text-align: center;
+    padding: 20px;
+  }
 }
 .subText {
   font-size: 2rem;
 }
 .correctAnswer {
   font-size: 3rem;
+
+  @media (max-width: 500px) {
+    width: fit-content;
+  }
+}
+
+.answerBlock {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 65%;
+  border-radius: 5px;
+  position: relative;
+  top: 20%;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    font-size: 4rem;
+    height: 100%;
+    margin-top: 100px;
+    border-radius: 0;
+    position: revert;
+    top: 0;
+  }
 }

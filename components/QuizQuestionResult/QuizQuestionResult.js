@@ -4,6 +4,7 @@ import styles from './QuizQuestionResult.module.css';
 
 export function QuizQuestionResult({
   answerStatus,
+  setAnswerStatus,
   correctAnswer,
 }) {
   return (
@@ -12,9 +13,7 @@ export function QuizQuestionResult({
         <section
           className={`${styles.answerBlock} + ${styles.incorrect}`}
         >
-          <h2 className={styles.mainText}>
-            Times Up!
-          </h2>
+          <h2 className={styles.mainText}>Times Up!</h2>
         </section>
       )}
       {answerStatus === 'correct' && (
@@ -32,9 +31,7 @@ export function QuizQuestionResult({
             Whoof! That ain&apos;t right!
           </h2>
           <div className={styles.answerText}>
-            <p className={styles.subText}>
-              The correct answer was:
-            </p>
+            <p className={styles.subText}>The correct answer was:</p>
             <h2 className={styles.correctAnswer}>{correctAnswer}</h2>
           </div>
         </section>

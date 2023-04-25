@@ -11,9 +11,25 @@
   background-color: hsla(7, 58%, 47%, 1);
   color: #f1eacf;
   padding: 25px;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    font-size: 1rem;
+    height: 100%;
+    margin-top: 100px;
+    border-radius: 0;
+    position: revert;
+    top: 0;
+    padding: 20px;
+  }
 }
 .banner {
   font-size: 5rem;
+  text-align: center;
+
+  @media (max-width: 500px) {
+    font-size: 3rem;
+  }
 }
 .status {
   font-size: 3rem;
@@ -23,4 +39,9 @@
   width: 750px;
   text-align: center;
   line-height: 2.5;
+
+  @media (max-width: 500px) {
+    width: revert;
+    font-size: 1.5rem;
+  }
 }
