@@ -26,7 +26,7 @@ export default function Home() {
         <br />
         Pick a game to get started!
       </p>
-      <div className={styles.buttonArray}>
+      <div className={styles.linkArray}>
         <GameLink
           destination='quiz'
           title='Quiz'

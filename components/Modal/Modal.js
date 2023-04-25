@@ -1,11 +1,12 @@
 import React from 'react';
 import FocusLock from 'react-focus-lock';
 
+import { josefinSans } from '@/pages/_app';
+
 import styles from './Modal.module.css';
 
 import { Button } from '../Button/Button';
 import Link from 'next/link';
-import { josefinSans } from '@/pages/_app';
 
 export function Modal({ modalOpen, setTimerStatus }) {
   React.useEffect(() => {

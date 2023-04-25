@@ -17,23 +17,37 @@
   transition: background 1.5s;
   overflow: auto;
   justify-content: flex-end;
+
+  @media (max-width: 500px) {
+    width: 100px;
+    height: 75px;
+    background: #be4332;
+    border: none;
+    border-radius: 5px;
+    transition: revert;
+    color: #f1eacf;
+    justify-content: center;
+  }
 }
-.wrapper:hover {
-  background-position: 100% 100%;
-  color: #f1eacf;
-  padding-top: 50px;
-  padding-bottom: 10px;
-  justify-content: space-between;
+@media (min-width: 500px) {
+  .wrapper:hover {
+    background-position: 100% 100%;
+    color: #f1eacf;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+  }
+  .wrapper:hover > .primaryBlurb {
+    display: block;
+  }
+  .wrapper:hover > .secondaryBlurb {
+    display: block;
+  }
+  .wrapper:hover > .title {
+    animation-play-state: paused;
+  }
 }
-.wrapper:hover > .primaryBlurb {
-  display: block;
-}
-.wrapper:hover > .secondaryBlurb {
-  display: block;
-}
-.wrapper:hover > .title {
-  animation-play-state: paused;
-}
+
 .title {
   animation-name: floating;
   animation-duration: 1.5s;
@@ -41,6 +55,13 @@
   animation-timing-function: ease-in-out;
   margin-top: 50px;
   padding-bottom: 25px;
+
+  @media (max-width: 500px) {
+    animation-name: none;
+    margin-top: inherit;
+    padding-bottom: inherit;
+    font-size: 1rem;
+  }
 }
 
 .primaryBlurb {
@@ -55,7 +76,6 @@
   text-align: center;
   color: #f1eacf;
 }
-
 
 @keyframes floating {
   0% {

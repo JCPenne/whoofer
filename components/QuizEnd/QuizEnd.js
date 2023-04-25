@@ -5,6 +5,7 @@ import styles from './QuizEnd.module.css';
 
 import quizEndResponses from '@/data/quizEndResponses.json';
 import { Button } from '@/components/Button/Button';
+import { josefinSans } from '@/pages/_app';
 
 export function QuizEnd({ quizLength, correctAnswers }) {
   console.log(quizEndResponses);
@@ -30,7 +31,7 @@ export function QuizEnd({ quizLength, correctAnswers }) {
         That&apos;s the end of the Quiz!
       </h1>
       <h2 className={styles.status}>{correctAnswers} / {quizLength}</h2>
-      <p className={styles.response}>
+      <p className={`${styles.response} ${josefinSans.className}`}>
         {determineResponse(quizLength, correctAnswers)}
       </p>
 
