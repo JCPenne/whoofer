@@ -36,7 +36,12 @@
   height: 200px;
   transition: 0.5s ease-in-out 0s;
 
-  @media (max-width: 500px) {
+  @media (width < 750px) {
+    width: 250px;
+    height: 150px;
+    font-size: 1.5rem;
+  }
+  @media (width < 500px) {
     width: 100px;
     height: 75px;
     font-size: 0.9rem;
