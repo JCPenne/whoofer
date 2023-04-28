@@ -9,6 +9,9 @@ import { Button } from '../Button/Button';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Timer from '../Timer/Timer';
 
+import Link from 'next/link';
+import { josefinSans } from '@/pages/_app';
+
 export function Header({
   modalOpen,
   setModalOpen,
@@ -44,7 +47,33 @@ export function Header({
         <Modal
           modalOpen={setModalOpen}
           setTimerStatus={setTimerStatus}
-        />
+        >
+          <div className={styles.dialog}>
+            <p className={`${styles.text} ${josefinSans.className}`}>
+              Are you sure you would like to exit the quiz?
+            </p>
+            <div className={styles.buttonGroup}>
+              <Button
+                type='modal'
+                onClick={() => {
+                  setModalOpen(false);
+                  setTimerStatus('active');
+                }}
+                className={styles.closeBtn}
+              >
+                Cancel
+              </Button>
+              <Link href='/'>
+                <Button
+                  type='modal'
+                  className={styles.closeBtn}
+                >
+                  Exit
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </Modal>
       )}
       <header className={styles.header}>
         <Button
