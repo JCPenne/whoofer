@@ -6,7 +6,7 @@
   color: #be4332;
   cursor: pointer;
 
-  @media (max-width: 500px) {
+  @media (width < 500px) {
     font-size: 3rem;
   }
 }
@@ -59,7 +59,7 @@
   font: inherit;
   cursor: pointer;
 
-  @media (max-width: 500px) {
+  @media (width < 500px) {
     font-size: 1rem;
   }
 }

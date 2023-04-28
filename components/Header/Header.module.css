@@ -9,7 +9,7 @@
   justify-content: space-evenly;
   font-size: 2rem;
 
-  @media (max-width: 500px) {
+  @media (width < 500px) {
     justify-content: space-evenly;
   }
 }

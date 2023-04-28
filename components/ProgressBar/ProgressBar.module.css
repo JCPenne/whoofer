@@ -4,7 +4,7 @@
   background-color: hsla(7, 58%, 47%, 0.32);
   border-radius: 3px;
 
-  @media (max-width: 500px) {
+  @media (width < 500px) {
     width: 50%;
   }
 }
