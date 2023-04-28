@@ -29,6 +29,11 @@
     justify-content: center;
   }
 }
+.desktopOnly {
+  @media (width <= 500px) {
+    display: none;
+  }
+}
 @media (min-width: 500px) {
   .wrapper:hover {
     background-position: 100% 100%;
@@ -58,16 +63,15 @@
   position: relative;
   bottom: 40px;
 
+  @media (max-width: 750px) {
+    font-size: 1.5rem;
+  }
   @media (max-width: 500px) {
     animation-name: none;
     margin-top: inherit;
     padding-bottom: inherit;
     font-size: 1rem;
     position: revert;
-  }
-
-  @media (max-width: 750px) {
-    font-size: 1.5rem;
   }
 }
 

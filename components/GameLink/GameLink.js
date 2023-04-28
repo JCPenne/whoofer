@@ -7,11 +7,12 @@ export function GameLink({
   title,
   blurbPrimary,
   blurbSecondary,
+  desktopOnly
 }) {
   return (
     <Link
       href={`/${destination}`}
-      className={styles.wrapper}
+      className={desktopOnly ? `${styles.wrapper} ${styles.desktopOnly}` : styles.wrapper}
     >
       <p
         className={`${styles.primaryBlurb} ${josefinSans.className}`}

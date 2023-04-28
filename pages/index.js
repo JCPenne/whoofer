@@ -33,17 +33,19 @@ export default function Home() {
           blurbPrimary='Test your dog breed knowledge'
           blurbSecondary='15 breed-specific questions in 90 seconds!'
         />
-        <GameLink 
-          destination='fetch'
+        <GameLink
+          destination='/'
           title='Fetch'
           blurbPrimary='Fetch is still in training'
-          blurbSecondary='We&apos;re excited too!'
+          blurbSecondary="We're excited too!"
+          desktopOnly={true}
         />
-        <GameLink 
-          destination='HideAndSeek'
+        <GameLink
+          destination='/'
           title='Hide & Seek'
-          blurbPrimary='We haven&apos;t learnt how to hide yet!'
-          blurbSecondary='Once we do you&apos;ll never find us!'
+          blurbPrimary="We haven't learnt how to hide yet!"
+          blurbSecondary="Once we do you'll never find us!"
+          desktopOnly={true}
         />
       </div>
     </>
