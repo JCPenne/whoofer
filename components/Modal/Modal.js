@@ -17,6 +17,7 @@ export function Modal({ modalOpen, setTimerStatus }) {
       }
     }
     window.addEventListener('keydown', handleKeyDown);
+    
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
