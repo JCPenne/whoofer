@@ -4,7 +4,7 @@ import styles from './QuizQuestionResult.module.css';
 
 export function QuizQuestionResult({
   answerStatus,
-  setAnswerStatus,
+  immediatelyProgressQuiz,
   correctAnswer,
 }) {
   return (
@@ -12,6 +12,7 @@ export function QuizQuestionResult({
       {answerStatus === 'expired' && (
         <section
           className={`${styles.answerBlock} + ${styles.incorrect}`}
+          onClick={() => immediatelyProgressQuiz()}
         >
           <h2 className={styles.mainText}>Times Up!</h2>
         </section>
@@ -19,6 +20,7 @@ export function QuizQuestionResult({
       {answerStatus === 'correct' && (
         <section
           className={`${styles.answerBlock} + ${styles.correct}`}
+          onClick={() => immediatelyProgressQuiz()}
         >
           Correct!
         </section>
@@ -26,6 +28,7 @@ export function QuizQuestionResult({
       {answerStatus === 'incorrect' && (
         <section
           className={`${styles.answerBlock} + ${styles.incorrect}`}
+          onClick={() => immediatelyProgressQuiz()}
         >
           <h2 className={styles.mainText}>
             Whoof! That ain&apos;t right!

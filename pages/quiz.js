@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRef } from 'react';
 
 import Questions from '../data/questions.json';
 
@@ -23,6 +24,8 @@ export default function QuizPage() {
 
   const [modalOpen, setModalOpen] = React.useState(false);
 
+  const refTimeout = useRef(null);
+
   const populateQuestion = () => {
     const [randomNum, randomQuestion] =
       getRandomQuestion(usedQuestions);
@@ -42,30 +45,35 @@ export default function QuizPage() {
   }
 
   function validateAnswer(answerValue) {
+    const { answer } = currentQuestion;
+
     setTimerStatus('idle');
 
-    const { answer } = currentQuestion;
     if (answerValue === answer) {
       setAnswerStatus('correct');
       setCorrectAnswers(correctAnswers + 1);
     } else {
       setAnswerStatus('incorrect');
     }
-    setTimeout(() => {
-      progressQuiz();
-      setAnswerStatus(undefined);
-    }, 1500);
+    progressQuiz();
   }
 
-  function progressQuiz() {
-    if (questionCount === Questions.length - 1) {
-      setQuizStatus('end');
-      setTimerStatus('idle');
-    } else {
-      setQuestionCount(questionCount + 1);
-      populateQuestion();
-      setTimerStatus('active');
+  function progressQuiz(delay = 1500) {
+    if (refTimeout.current) {
+      clearTimeout(refTimeout.current);
     }
+    
+    refTimeout.current = setTimeout(() => {
+      setAnswerStatus(undefined);
+      if (questionCount === Questions.length - 1) {
+        setQuizStatus('end');
+        setTimerStatus('idle');
+      } else {
+        setQuestionCount(questionCount + 1);
+        populateQuestion();
+        setTimerStatus('active');
+      }
+    }, delay);
   }
 
   function handleTimeExpired() {
@@ -128,6 +136,7 @@ export default function QuizPage() {
         <QuizQuestionResult
           answerStatus={answerStatus}
           correctAnswer={currentQuestion.answer}
+          immediatelyProgressQuiz={() => progressQuiz(0)}
         />
       )}
       {timerStatus === 'expired' && (
