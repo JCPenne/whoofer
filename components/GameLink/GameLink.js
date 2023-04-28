@@ -13,8 +13,16 @@ export function GameLink({
       href={`/${destination}`}
       className={styles.wrapper}
     >
-      <p className={`${styles.primaryBlurb} ${josefinSans.className}`}>{blurbPrimary}</p>
-      <p className={`${styles.secondaryBlurb} ${josefinSans.className}`}>{blurbSecondary}</p>
+      <p
+        className={`${styles.primaryBlurb} ${josefinSans.className}`}
+      >
+        {blurbPrimary}
+      </p>
+      <p
+        className={`${styles.secondaryBlurb} ${josefinSans.className}`}
+      >
+        {blurbSecondary}
+      </p>
       <h3 className={styles.title}>{title}</h3>
     </Link>
   );
