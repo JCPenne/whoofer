@@ -17,10 +17,9 @@
 .blurb_wrapper {
   font-size: 2rem;
   text-align: center;
-  line-height: 1.5;
+  line-height: 2;
   padding-left: 20px;
   padding-right: 20px;
-  width: max-content;
   margin-left: auto;
   margin-right: auto;
   overflow: auto;

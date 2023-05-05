@@ -11,7 +11,7 @@
   color: #f1eacf;
   padding: 25px;
 
-  @media (width < 500px) {
+  @media (width < 600px) {
     width: 100%;
     font-size: 1rem;
     height: 100%;
@@ -20,20 +20,21 @@
     position: revert;
     top: 0;
     padding: 20px;
+    justify-content: space-around;
   }
 }
 .banner {
   font-size: 5rem;
   text-align: center;
 
-  @media (width < 500px) {
+  @media (width < 600px) {
     font-size: 3rem;
   }
 }
 .status {
   font-size: 3rem;
 
-  @media (width < 500px) {
+  @media (width < 600px) {
     font-size: 1.5rem;
   }
 }
@@ -43,7 +44,7 @@
   text-align: center;
   line-height: 2.5;
 
-  @media (width < 500px) {
+  @media (width < 600px) {
     width: revert;
     font-size: 1.5rem;
   }

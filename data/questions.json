@@ -5,42 +5,42 @@
     "options": ["Labrador Retriever", "Poodle", "Bulldog"]
   },
   {
-    "question": "This is the only remaining 1934 top five breed that remains in the top five today.",
+    "question": "What is the only 1934 top five breed that remains in the top five today?",
     "answer": "Beagle",
     "options": ["Poodle", "Border Collie", "Beagle"]
   },
   {
-    "question": "The name for this breed originates from the word Black, which signified the faces of the animals they often tend to.",
+    "question": "Which breed's name originates from the word 'Black' signifying the faces of the animals they often tend to?",
     "answer": "Collie",
     "options": ["Collie", "Akita", "Komondor"]
   },
   {
-    "question": "In 2023 this breed won 1st place in AKC's Most Popular Breed list, usurping the 30+ year champion.",
+    "question": "Which breed won 1st place in AKC's Most Popular Breed list in 2023, usurping the 30+ year champion?",
     "answer": "French Bulldog",
     "options": ["Chihuahua", "French Bulldog", "Golden Retreiver"]
   },
   {
-    "question": "While often thought of as Barkless, this breed can actually growl and even yodel!",
+    "question": "While often thought of as Barkless which breed can actually growl and even yodel?",
     "answer": "Basenji",
     "options": ["Basenji", "Great Pyrenees", "Shiba Inu"]
   },
   {
-    "question": "In a 1 mile race this breed can outpace a cheetah",
+    "question": "In a 1 mile race which breed can outpace a cheetah?",
     "answer": "Greyhound",
     "options": ["Saluki", "Vizsla", "Greyhound"]
   },
   {
-    "question": "This breed's sense of smell is so accurate that it's tracking results can be used in a court of law",
+    "question": "Whose sense of smell is so accurate that its tracking results can be used in a court of law?",
     "answer": "Bloodhound",
     "options": ["Basset Hound", "Bluetick Coonhound", "Bloodhound"]
   },
   {
-    "question": "This breed is one of only two that has a black tongue.",
+    "question": "Which of these breeds is one of only two that has a black tongue?",
     "answer": "Sharpei",
     "options": ["Pomeranian", "Sharpei", "Dalmation"]
   },
   {
-    "question": "This breed does not actually originate from the country of its name and was developed in the United States.",
+    "question": "Which breed does not actually originate from the country of its name and was developed in the United States?",
     "answer": "Australian Shepherd",
     "options": [
       "Australian Shepherd",
@@ -49,12 +49,12 @@
     ]
   },
   {
-    "question": "The thick double coat of this breed allows them to survive in extreme weather conditions.",
+    "question": "Bred to survive extreme weather conditions which breed has a thick double coat of fur?",
     "answer": "Siberian Husky",
     "options": ["Siberian Husky", "St Bernard", "Great Pyrenees"]
   },
   {
-    "question": "These dogs were initially bred for Truffle Hunting!",
+    "question": "Which breed of dog was initially bred for Truffle Hunting?",
     "answer": "Lagotto Romagnolos",
     "options": [
       "Brussels Griffon",
@@ -63,22 +63,22 @@
     ]
   },
   {
-    "question": "Originally used as herding dogs, this breed has a distinctive corded coat that forms dreadlocks.",
+    "question": "Originally used as herding dogs which of these three breeds has a distinctive corded coat that forms dreadlocks?",
     "answer": "Puli",
     "options": ["Samoyed", "Puli", "Finnish Spitz"]
   },
   {
-    "question": "These dogs excel in the water and are known for their webbed feet.",
+    "question": "Which dogs excel in the water and are known for their webbed feet?",
     "answer": "NewFoundland",
     "options": ["Vizsla", "NewFoundland", "Shiba Inu"]
   },
   {
-    "question": "Except for a tuft of hair on their head and tail, this breed is completely hairless.",
+    "question": "Except for a tuft of hair on their head and tail which breed is completely hairless?",
     "answer": "Xoloitzcuintlis",
     "options": ["Bull Terrier", "Azawakh", "Xoloitzcuintlis"]
   },
   {
-    "question": "Originally bred in France as companion dogs, this dog's name is German for \"little lion.\"",
+    "question": "What is the name of breed that was originally bred in France as companion dogs and whose name is German for \"little lion.\"",
     "answer": "Lowchen",
     "options": ["Leonberger", "Lowchen", "Hovawart"]
   }

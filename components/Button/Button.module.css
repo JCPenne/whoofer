@@ -1,13 +1,17 @@
 .start_game {
+  width: 250px;
   height: 200px;
   font-size: 5rem;
   background-color: transparent;
-  border: none;
+  border: 3px solid #be4332;
+  border-radius: 5px;
   color: #be4332;
   cursor: pointer;
 
   @media (width < 500px) {
     font-size: 3rem;
+    width: 150px;
+    height: 100px;
   }
 }
 
@@ -15,14 +19,18 @@
   content: 'Start';
 }
 
-@media (min-width: 501px) {
+@media (width > 500px) {
   .start_game::after {
     content: 'Start';
     transition: font-size 1s ease-in-out;
   }
   .start_game:hover::after {
-    font-size: 6rem;
     content: 'Woof!';
+  }
+  .start_game:hover {
+    border: none;
+    background-color: #be4332;
+    color: #f1eacf;
   }
 }
 .answer {
@@ -42,9 +50,9 @@
     font-size: 1.5rem;
   }
   @media (width < 500px) {
-    width: 100px;
+    width: 200px;
     height: 75px;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 .answer:hover {
@@ -77,4 +85,19 @@
   background-color: #be4332;
   color: #f1eacf;
   font-size: 3rem;
+  border: 3px solid #f1eacf;
+  border-radius: 5px;
+  height: 100px;
+  width: 150px;
+
+  @media (width < 500px) {
+    font-size: 1.5rem;
+    width: 100px;
+    height: 50px;
+  }
+}
+.quizEnd:hover {
+  background-color: #f1eacf;
+  color: #be4332;
+  border: 3px solid #be4332;
 }
