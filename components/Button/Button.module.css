@@ -1,10 +1,9 @@
 .start_game {
-  width: 250px;
+  width: 400px;
   height: 200px;
   font-size: 5rem;
   background-color: transparent;
-  border: 3px solid #be4332;
-  border-radius: 5px;
+  border: none;
   color: #be4332;
   cursor: pointer;
 
@@ -25,12 +24,8 @@
     transition: font-size 1s ease-in-out;
   }
   .start_game:hover::after {
+    font-size: 6rem;
     content: 'Woof!';
-  }
-  .start_game:hover {
-    border: none;
-    background-color: #be4332;
-    color: #f1eacf;
   }
 }
 .answer {
