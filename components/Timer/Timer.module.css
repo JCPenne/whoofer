@@ -1,6 +1,7 @@
 .timer {
   text-align: center;
   width: 75px;
+  min-width: 75px;
   height: 75px;
   border-radius: 100%;
   background-color: hsla(7, 58%, 47%, 0.32);

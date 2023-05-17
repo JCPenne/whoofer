@@ -35,6 +35,7 @@ export function QuizQuestionResult({
           </h2>
           <div className={styles.answerText}>
             <p className={styles.subText}>The correct answer was:</p>
+            {'  '}
             <h2 className={styles.correctAnswer}>{correctAnswer}</h2>
           </div>
         </section>
