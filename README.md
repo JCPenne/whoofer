@@ -5,8 +5,31 @@ Built for a deeper understanding of React, NextJS and CSS Modules.
 For having fun, and for the love of dogs!
 
 <div align='center'>
-<img src="whoofer-readme-gif.gif" width="200" height="400">
+  <img src="https://github.com/JCPenne/whoofer/blob/main/images/Homepage.png" width="200" height="100">
+  <img src="https://github.com/JCPenne/whoofer/blob/main/images/Quizpage.png" width="200" height="100">
 </div>
+<div align='center'>
+  <img src="https://github.com/JCPenne/whoofer/blob/main/images/Quiz.png" width="100" height="200">
+  <img src="https://github.com/JCPenne/whoofer/blob/main/images/Incorrect.png" width="100" height="200">
+</div>
+
+## Highlights
+
+The <a href="https://github.com/JCPenne/whoofer/blob/main/pages/quiz.js">Quiz Page</a> houses numerous rendering logic and helper functions for the Quiz itself.
+
+The <a href="https://github.com/JCPenne/whoofer/blob/main/utils">Utils</a> folder houses a custom Randomizer function to provide a random sequence of questions to each user of the quiz
+```
+export function getRandomQuestion(usedQuestions) {
+  let max = Questions.length - 1;
+  let min = 0;
+  let randomNum = Math.floor(Math.random() * (max - min + 1) + min);
+
+  while (usedQuestions.includes(randomNum)) {
+    randomNum = Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  return [randomNum, Questions[randomNum]];
+}
+```
 
 ## Getting Started
 
